@@ -60,7 +60,11 @@ function ready(error, boston) {
 	// console.log(data);
 
 	L.geoJson(boston, {
-		style: bostonBlockStyle
+		style: bostonBlockStyle,
+
+		onEachFeature: function (feature, layer) {
+		    layer.bindPopup("<h2>" + feature.properties.NAME10 + "</h2>");
+		}
 	}).addTo(busRouteLayer); 
 
 	
@@ -85,11 +89,10 @@ function addPointLayer(data, thisLayer) {
 			layer.setIcon(L.divIcon({
 
 				className: 'circle-icon',
-				// html: '<i class="fa fa-camera-retro fa-3x"></i>',
 				iconSize: [10, 10]
 			}));
 
-		    // layer.bindPopup("<h2>" + feature.properties.station + "</h2>");
+		    layer.bindPopup("<h2>" + feature.properties.station + "</h2>");
 		}
 	}).addTo(thisLayer); 
 
