@@ -48,27 +48,26 @@ var geojson = [
 ];
 
 queue()
-	// .defer(d3.json, "bostonBlocks.geojson") // 7412
+	.defer(d3.json, "bostonBlocks.geojson") // 7412
 	// .defer(d3.json, "hubwayStation.geojson") // 142 -> available for loading
  	// .defer(d3.json, "busRoutes.geojson") // 765
 	// .defer(d3.json, "busStops.geojson") // 7678
 	.defer(d3.json, "CDD_ZoningDistricts.geojson")
 	.await(ready);
 
-function ready(error, data) {
+function ready(error, boston, cambridge) {
 
 	// console.log(data);
 
-	L.geoJson(data, {
-		// style: L.mapbox.simplestyle.style
+	L.geoJson(boston, {
 		style: bostonBlockStyle
 	}).addTo(busRouteLayer); 
 
+	L.geoJson(cambridge, {
+		style: bostonBlockStyle
+	}).addTo(busRouteLayer); 
 	
 	busRouteLayer.addTo(map);
-
-	// addPointLayer(bike_station, bikeLayer);
-	// addBlockLayer(boston_blocks, blockLayer);
 }
 
 function addPointLayer(data, thisLayer) {
