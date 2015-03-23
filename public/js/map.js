@@ -7,19 +7,21 @@ L.mapbox.accessToken = 'pk.eyJ1Ijoic2Vuc2VhYmxlIiwiYSI6ImxSNC1wc28ifQ.hst-boAjFC
 // white: examples.map-8ced9urs'
 
 var map = L.map('map', {
-	minZoom: 11,
-	maxZoom: 18
-	// zoomControl: false
-}).setView([42.3133735,-71.0571571], 11);
+	minZoom: 10,
+	maxZoom: 15,
+	zoomControl: false
+}).setView([42.3133735 + 0.05, -71.0571571 - 0.04], 14);
 
-var baseLayer = L.mapbox.tileLayer('examples.map-20v6611k');
+var baseLayer = L.mapbox.tileLayer('senseable.kakb3n74');
 baseLayer.setOpacity(1);
 baseLayer.addTo(map);
 
-var busBlockLayer = L.mapbox.tileLayer('senseable.u0jp2e29', {
-	accessToken: L.mapbox.accessToken
-});
-busBlockLayer.addTo(map);
+var bikeLayer = L.mapbox.featureLayer();
+
+// var busBlockLayer = L.mapbox.tileLayer('senseable.u0jp2e29', {
+// 	accessToken: L.mapbox.accessToken
+// });
+// busBlockLayer.addTo(map);
 
 var busBlockStyle = {
 
@@ -30,14 +32,40 @@ var busBlockStyle = {
 	weight: 1
 };
 
-// queue()
-//   .defer(d3.json, "BostonBlocks.geojson")
-//   .await(ready);
+queue()
+  // .defer(d3.json, "BostonBlocks.geojson")
+  .defer(d3.json, "hubwayStation.geojson")
+  .await(ready);
 
-// function ready(error, block_bus) {
+function ready(error, hubway_station) {
 
-// 	// L.geoJson(block_bus, {
+	var center = L.geoJson(hubway_station, {
 
-// 	// 	// style: busBlockStyle
-// 	// }).addTo(base_layer);
-// }
+		onEachFeature: function (feature, layer) {
+
+			// layer.setIcon(L.mapbox.marker.icon({
+			// 	//https://www.mapbox.com/maki/
+			// 	// 'marker-symbol': 'circle', 
+			// 	'marker-color': '#FFEB3B', //yellow
+			// 	// 'marker-color': '59245f', // purple
+			// 	'marker-size': 'small'
+			// }));
+
+			// layer.setOpacity(0.6);
+
+			layer.setIcon(L.divIcon({
+
+				className: 'circle-icon',
+				html: '<i class="fa fa-camera-retro fa-3x"></i>',
+				iconSize: [10, 10]
+			}));
+
+		    layer.bindPopup("<h2>" + feature.properties.station + "</h2>");
+		}
+	}).addTo(bikeLayer); // boundary of city on the map
+
+	bikeLayer.addTo(map);
+}
+
+
+
