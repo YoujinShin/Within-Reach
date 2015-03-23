@@ -2,6 +2,12 @@ body { margin: 0; padding: 0; }
 
 #map { position:absolute; top:0; bottom:0; width:100%; }
 
+h2 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+}
+
 .circle-icon {
 	border-radius: 50%;
 	width: 50px;

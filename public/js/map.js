@@ -7,39 +7,72 @@ L.mapbox.accessToken = 'pk.eyJ1Ijoic2Vuc2VhYmxlIiwiYSI6ImxSNC1wc28ifQ.hst-boAjFC
 // white: examples.map-8ced9urs'
 
 var map = L.map('map', {
-	minZoom: 10,
+	minZoom: 2,
 	maxZoom: 15,
 	zoomControl: false
-}).setView([42.3133735 + 0.05, -71.0571571 - 0.04], 14);
+}).setView([42.3133735 + 0.0, -71.0571571 - 0.04], 12);
 
 var baseLayer = L.mapbox.tileLayer('senseable.kakb3n74');
 baseLayer.setOpacity(1);
 baseLayer.addTo(map);
 
+var blockLayer = L.mapbox.featureLayer();
 var bikeLayer = L.mapbox.featureLayer();
+var busRouteLayer = L.mapbox.featureLayer();
+var busStopLayer = L.mapbox.featureLayer();
 
-// var busBlockLayer = L.mapbox.tileLayer('senseable.u0jp2e29', {
-// 	accessToken: L.mapbox.accessToken
-// });
-// busBlockLayer.addTo(map);
-
-var busBlockStyle = {
+var bostonBlockStyle = {
 
 	fillColor: '#fff',
-	fillOpacity:0.8,
+	fillOpacity:0.1,
 	color: '#fff',
-	// opacity: 0,
+	opacity: 0.2,
 	weight: 1
 };
 
+var geojson = [
+  {
+    "type": "Feature",
+    "geometry": {
+      "type": "LineString",
+      "coordinates": [
+        [-77.03238901390978,38.913188059745586],
+        [-122.414, 37.776]
+      ]
+    },
+    "properties": {
+      "stroke": "#fc4353",
+      "stroke-width": 5
+    }
+  }
+];
+
 queue()
-  // .defer(d3.json, "BostonBlocks.geojson")
-  .defer(d3.json, "hubwayStation.geojson")
-  .await(ready);
+	.defer(d3.json, "bostonBlocks.geojson") // 7412
+	// .defer(d3.json, "hubwayStation.geojson") // 142 -> available for loading
+ 	// .defer(d3.json, "busRoutes.geojson") // 765
+	// .defer(d3.json, "busStops.geojson") // 7678
+	.await(ready);
 
-function ready(error, hubway_station) {
+function ready(error, data) {
 
-	var center = L.geoJson(hubway_station, {
+	// console.log(data);
+
+	L.geoJson(data.features, {
+		// style: L.mapbox.simplestyle.style
+		style: bostonBlockStyle
+	}).addTo(busRouteLayer); 
+
+	
+	busRouteLayer.addTo(map);
+
+	// addPointLayer(bike_station, bikeLayer);
+	// addBlockLayer(boston_blocks, blockLayer);
+}
+
+function addPointLayer(data, thisLayer) {
+
+	L.geoJson(data, {
 
 		onEachFeature: function (feature, layer) {
 
@@ -50,22 +83,28 @@ function ready(error, hubway_station) {
 			// 	// 'marker-color': '59245f', // purple
 			// 	'marker-size': 'small'
 			// }));
-
 			// layer.setOpacity(0.6);
 
 			layer.setIcon(L.divIcon({
 
 				className: 'circle-icon',
-				html: '<i class="fa fa-camera-retro fa-3x"></i>',
+				// html: '<i class="fa fa-camera-retro fa-3x"></i>',
 				iconSize: [10, 10]
 			}));
 
-		    layer.bindPopup("<h2>" + feature.properties.station + "</h2>");
+		    // layer.bindPopup("<h2>" + feature.properties.station + "</h2>");
 		}
-	}).addTo(bikeLayer); // boundary of city on the map
+	}).addTo(thisLayer); 
 
-	bikeLayer.addTo(map);
+	thisLayer.addTo(map);
 }
 
+function addBlockLayer(data, thisLayer) {
 
+	L.geoJson(data, {
 
+		style: bostonBlockStyle
+	}).addTo(thisLayer); 
+
+	thisLayer.addTo(map);
+}
