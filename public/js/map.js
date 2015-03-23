@@ -48,10 +48,11 @@ var geojson = [
 ];
 
 queue()
-	.defer(d3.json, "bostonBlocks.geojson") // 7412
+	// .defer(d3.json, "bostonBlocks.geojson") // 7412
 	// .defer(d3.json, "hubwayStation.geojson") // 142 -> available for loading
  	// .defer(d3.json, "busRoutes.geojson") // 765
 	// .defer(d3.json, "busStops.geojson") // 7678
+	.defer(d3.json, "CDD_ZoningDistricts.geojson")
 	.await(ready);
 
 function ready(error, data) {
