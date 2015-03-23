@@ -58,7 +58,7 @@ function ready(error, data) {
 
 	// console.log(data);
 
-	L.geoJson(data.features, {
+	L.geoJson(data, {
 		// style: L.mapbox.simplestyle.style
 		style: bostonBlockStyle
 	}).addTo(busRouteLayer); 
