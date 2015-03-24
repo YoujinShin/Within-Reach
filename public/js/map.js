@@ -30,23 +30,6 @@ var bostonBlockStyle = {
 	weight: 1
 };
 
-var geojson = [
-  {
-    "type": "Feature",
-    "geometry": {
-      "type": "LineString",
-      "coordinates": [
-        [-77.03238901390978,38.913188059745586],
-        [-122.414, 37.776]
-      ]
-    },
-    "properties": {
-      "stroke": "#fc4353",
-      "stroke-width": 5
-    }
-  }
-];
-
 queue()
 	.defer(d3.json, "bostonBlock.geojson") // 7412
 	// .defer(d3.json, "hubwayStation.geojson") // 142 -> available for loading
