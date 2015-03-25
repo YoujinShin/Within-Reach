@@ -7,13 +7,13 @@ L.mapbox.accessToken = 'pk.eyJ1Ijoic2Vuc2VhYmxlIiwiYSI6ImxSNC1wc28ifQ.hst-boAjFC
 // white: examples.map-8ced9urs'
 
 var map = L.map('map', {
-	minZoom: 2,
+	minZoom: 11,
 	maxZoom: 15,
 	zoomControl: false
 }).setView([42.3133735 + 0.0, -71.0571571 - 0.04], 12);
 
 var baseLayer = L.mapbox.tileLayer('senseable.kakb3n74');
-baseLayer.setOpacity(1);
+baseLayer.setOpacity(0.6);
 baseLayer.addTo(map);
 
 var blockLayer = L.mapbox.featureLayer();
@@ -40,54 +40,57 @@ queue()
 
 function ready(error, boston) {
 
-	// console.log(data);
-
 	L.geoJson(boston, {
-		style: bostonBlockStyle,
 
-		onEachFeature: function (feature, layer) {
-		    layer.bindPopup("<h2>" + feature.properties.NAME10 + "</h2>");
-		}
+		onEachFeature: onEachFeature
+
+		// style: bostonBlockStyle,
+		// onEachFeature: function (feature, layer) {
+		//     layer.bindPopup("<h2>" + feature.properties.NAME10 + "</h2>");
+		// }
 	}).addTo(busRouteLayer); 
 
-	
 	busRouteLayer.addTo(map);
 }
 
-function addPointLayer(data, thisLayer) {
+// function addPointLayer(data, thisLayer) {
 
-	L.geoJson(data, {
+// 	L.geoJson(data, {
 
-		onEachFeature: function (feature, layer) {
+// 		onEachFeature: onEachFeature(feature, layer)
 
-			// layer.setIcon(L.mapbox.marker.icon({
-			// 	//https://www.mapbox.com/maki/
-			// 	// 'marker-symbol': 'circle', 
-			// 	'marker-color': '#FFEB3B', //yellow
-			// 	// 'marker-color': '59245f', // purple
-			// 	'marker-size': 'small'
-			// }));
-			// layer.setOpacity(0.6);
+// 		// onEachFeature: function (feature, layer) {
 
-			layer.setIcon(L.divIcon({
+// 		// 	// layer.setIcon(L.mapbox.marker.icon({
+// 		// 	// 	//https://www.mapbox.com/maki/
+// 		// 	// 	// 'marker-symbol': 'circle', 
+// 		// 	// 	'marker-color': '#FFEB3B', //yellow
+// 		// 	// 	// 'marker-color': '59245f', // purple
+// 		// 	// 	'marker-size': 'small'
+// 		// 	// }));
+// 		// 	// layer.setOpacity(0.6);
 
-				className: 'circle-icon',
-				iconSize: [10, 10]
-			}));
+// 		// 	layer.setIcon(L.divIcon({
 
-		    layer.bindPopup("<h2>" + feature.properties.station + "</h2>");
-		}
-	}).addTo(thisLayer); 
+// 		// 		className: 'circle-icon',
+// 		// 		iconSize: [10, 10]
+// 		// 	}));
 
-	thisLayer.addTo(map);
-}
+// 		//     layer.bindPopup("<h2>" + feature.properties.station + "</h2>");
+// 		// }
+// 	}).addTo(thisLayer); 
 
-function addBlockLayer(data, thisLayer) {
+// 	thisLayer.addTo(map);
+// }
 
-	L.geoJson(data, {
+// function addBlockLayer(data, thisLayer) {
 
-		style: bostonBlockStyle
-	}).addTo(thisLayer); 
+// 	L.geoJson(data, {
 
-	thisLayer.addTo(map);
-}
+// 		style: bostonBlockStyle
+// 	}).addTo(thisLayer); 
+
+// 	thisLayer.addTo(map);
+// }
+
+
