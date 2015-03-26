@@ -34,14 +34,14 @@ function draw() {
 		.attr('cx', dx)
 		.attr('cy', height/2)
 		.attr('r', diameter)
-		.style('fill', 'rgba(255,255,255,0)')
+		.style('fill', 'rgba(255, 235, 59,0.1)')
 		.attr('stroke', 'rgba(255, 235, 59,0.9)');
 
 	var circle_2 = g.append('circle')
 		.attr('cx', dx*2)
 		.attr('cy', height/2)
-		.attr('r', diameter)
-		.style('fill', 'rgba(255,255,255,0)')
+		.attr('r', diameter*0.75)
+		.style('fill', 'rgba(255, 235, 59,0.1)')
 		.attr('stroke', 'rgba(255, 235, 59,0.9)');
 		// .attr('stroke', 'rgba(63, 81, 181,0.9)');
 
