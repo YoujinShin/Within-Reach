@@ -32,16 +32,17 @@ var lastClicked = 0;
 mouseClickLayer = function(e) {
 
 	var infos=getInfos(e);
-	// console.log(e.latlng.lat);
-	
-	// var layer=infos.mapId;
-	// var layer=mapObjects[infos.mapId]._layers[infos.id];
+
 
 	if(infos.style.active) {
+
+		$('#container').css('visibility', 'hidden');
 
 		setLayerStyle(e.target, "unselect");
 		map.setView([42.3133735 + 0.0, -71.0571571 - 0.04], 12);
 	} else {
+
+		$('#container').css('visibility', 'visible');
 
 		setLayerStyle(e.target, "select");
 		map.setView([e.latlng.lat, e.latlng.lng], 14);

@@ -5,6 +5,7 @@
 
 	<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="/js/mapbox.label.js"></script>
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
@@ -13,10 +14,14 @@
 </head>
 
 <body>
-	<div id='title'><span class="strong">WITHIN </span>REACH</div>
+	<div id='title'><a href="/"><span class="strong">WITHIN </span>REACH</a></div>
+	<div id='about'>ABOUT</div>
+	<img src="close_button.png" id="close_button">
 	<!-- <div id='slogan'>Access capacity for 30 min in Boston City</div> -->
 
+	<div id='about_container'>Access capacity for 30 min in Boston City</div>
 	<div id='container'></div>
+
 
 	<!-- library -->
 	<script src="/js/d3.min.js"></script>
@@ -26,6 +31,7 @@
 	<div id='map'></div>
 
 	<!-- javascript -->
+	<script src="/js/main.js"></script>
 	<script src="/js/map_setcolors.js"></script>
 	<script src="/js/map_selection.js"></script>
 	<script src="/js/map.js"></script>
