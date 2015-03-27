@@ -33,7 +33,6 @@ mouseClickLayer = function(e) {
 
 	var infos=getInfos(e);
 
-
 	if(infos.style.active) {
 
 		$('#container').css('visibility', 'hidden');
@@ -56,8 +55,20 @@ mouseClickLayer = function(e) {
 		}
 		
 	}
+
+	var url = 'http://senseable3.mit.edu/within-reach/area1.geojson';
+// 
+	// var xhr = createCORSRequest('GET', url);
+	// if (!xhr) {
+	//   throw new Error('CORS not supported');
+	// }
+	// console.log(xhr);
+
+	var area1 = httpGet(url);
+	console.log(area1);
 	
 }
+
 
 
 getInfos = function(e) {
