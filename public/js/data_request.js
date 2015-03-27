@@ -8,26 +8,35 @@ function httpGet(theUrl) {
     return xmlHttp.responseText;
 }
 
-function createCORSRequest(method, url) {
+var createCORSRequest = function(method, url) {
   var xhr = new XMLHttpRequest();
   if ("withCredentials" in xhr) {
-
-    // Check if the XMLHttpRequest object has a "withCredentials" property.
-    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+    // Most browsers.
     xhr.open(method, url, true);
-
   } else if (typeof XDomainRequest != "undefined") {
-
-    // Otherwise, check if XDomainRequest.
-    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    // IE8 & IE9
     xhr = new XDomainRequest();
     xhr.open(method, url);
-
   } else {
-
-    // Otherwise, CORS is not supported by the browser.
+    // CORS not supported.
     xhr = null;
-
   }
   return xhr;
-}
+
+  // return JSON.parse(xhr.responseText);
+  // return JSON.parse(xhr.responseText);
+};
+
+// var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
+// var method = 'GET';
+// var xhr = createCORSRequest(method, url);
+
+// xhr.onload = function() {
+//   // Success code goes here.
+// };
+
+// xhr.onerror = function() {
+//   // Error code goes here.
+// };
+
+// xhr.send();

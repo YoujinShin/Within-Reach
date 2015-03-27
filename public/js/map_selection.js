@@ -56,17 +56,23 @@ mouseClickLayer = function(e) {
 		
 	}
 
-	var url = 'http://senseable3.mit.edu/within-reach/area1.geojson';
-// 
-	// var xhr = createCORSRequest('GET', url);
-	// if (!xhr) {
-	//   throw new Error('CORS not supported');
-	// }
-	// console.log(xhr);
+	var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
+	var method = 'GET';
+	var xhr = createCORSRequest(method, url);
 
-	var area1 = httpGet(url);
-	console.log(area1);
-	
+	xhr.onload = function() {
+	  // Success code goes here.
+	  var json = JSON.parse(xhr.responseText);
+	  console.log(json);
+	};
+
+	xhr.onerror = function() {
+	  // Error code goes here.
+	  console.log('error');
+	};
+
+	xhr.send();
+		
 }
 
 
