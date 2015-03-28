@@ -34,15 +34,15 @@ function draw() {
 		.attr('cx', dx)
 		.attr('cy', height/2)
 		.attr('r', diameter)
-		.style('fill', '#ce55b1')
-		.style('fill-opacity', 0.2)
-		.attr('stroke', '#ce55b1');
+		.style('fill', '#6DF7F2')
+		.style('fill-opacity', 0.5)
+		.attr('stroke', 'rgba(0,0,0,0)');
 
 	var circle_2 = g.append('circle')
 		.attr('cx', dx*2)
 		.attr('cy', height/2)
-		.attr('r', diameter*0.75)
-		.style('fill', '#5575ce')
-		.style('fill-opacity', 0.2)
-		.attr('stroke', '#5575ce');
+		.attr('r', diameter)
+		.style('fill', '#0361FB')
+		.style('fill-opacity', 0.5)
+		.attr('stroke', 'rgba(0,0,0,0)');
 }

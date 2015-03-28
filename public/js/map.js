@@ -22,20 +22,20 @@ var secondLayer = L.mapbox.featureLayer();
 
 var firstLayerStyle = {
 
-	fillColor: '#ce55b1',
-	fillOpacity:0.3,
-	color: '#ce55b1',
+	fillColor: '#6DF7F2', // light blue
+	fillOpacity: 0.5,
+	color: '#6DF7F2',
 	opacity: 1,
-	weight: 3
+	weight: 0
 };
 
 var secondLayerStyle = {
 
-	fillColor: '#5575ce',
-	fillOpacity:0.3,
-	color: '#5575ce',
+	fillColor: '#0361FB', // blue
+	fillOpacity: 0.5,
+	color: '#0361FB',
 	opacity: 1,
-	weight: 3
+	weight: 0
 };
 
 queue()

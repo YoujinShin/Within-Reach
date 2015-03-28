@@ -59,21 +59,6 @@ mouseClickLayer = function(e) {
 	firstLayer.clearLayers();
 	secondLayer.clearLayers();
 
-	// get First ShapeFile
-	var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
-	var method = 'GET';
-	var xhr = createCORSRequest(method, url);
-
-	xhr.onload = function() {
-	  var json = JSON.parse(xhr.responseText);
-	  drawFirstArea(json);
-	};
-
-	xhr.onerror = function() {
-	  console.log('error');
-	};
-
-	xhr.send(); // sending a query
 
 	// get Second ShapeFile
 	var url2 = 'http://senseable3.mit.edu/within-reach/testShape2.geojson';
@@ -90,6 +75,23 @@ mouseClickLayer = function(e) {
 	};
 
 	xhr2.send(); // sending a query
+
+
+	// get First ShapeFile
+	var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
+	var method = 'GET';
+	var xhr = createCORSRequest(method, url);
+
+	xhr.onload = function() {
+	  var json = JSON.parse(xhr.responseText);
+	  drawFirstArea(json);
+	};
+
+	xhr.onerror = function() {
+	  console.log('error');
+	};
+
+	xhr.send(); // sending a query
 }
 
 function drawFirstArea(data) {
@@ -101,7 +103,7 @@ function drawFirstArea(data) {
 		// }
 	}).addTo(firstLayer); 
 
-	firstLayer.addTo(map);
+	firstLayer.setZIndex(1).addTo(map);
 }
 
 function drawSecondArea(data) {
@@ -111,9 +113,9 @@ function drawSecondArea(data) {
 		// onEachFeature: function (feature, layer) {
 		//     layer.bindPopup("<h2>" + feature.properties.NAME10 + "</h2>");
 		// }
-	}).addTo(firstLayer); 
+	}).addTo(secondLayer); 
 
-	firstLayer.addTo(map);
+	secondLayer.setZIndex(1).addTo(map);
 }
 
 
