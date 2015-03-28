@@ -6,8 +6,9 @@ setLayerStyle = function(layer, type, alpha) {
 	var defaultColor = 'rgba(255,255,255,0.3)';
 
 	// var selectedColor = '#55B1CE'; // light blue
-	// var selectedColor = '#6DF7F2'; //lighter blue
-	var selectedColor = '#ff4081';// pink
+	var selectedColor = '#6DF7F2';  //lighter blue
+	// var selectedColor = '#65E6E6'; // considering additivie color
+	// var selectedColor = '#ff4081';// pink
 	
 	switch(type) {
 		case "default":
@@ -60,7 +61,7 @@ setLayerStyle = function(layer, type, alpha) {
 			break;
 		case "select":
 			style={
-				weight: 2,
+				weight: 1.5,
 				fillOpacity: 0.3,
 				color: selectedColor,
 				fillColor: selectedColor,

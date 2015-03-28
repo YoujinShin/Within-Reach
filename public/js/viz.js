@@ -20,7 +20,6 @@ function draw() {
 
 	var diameter = 40;
 	var dx = width/9;
-	// var py = (height- diameter)/2;
 
 	var bg = g.append('rect')
 		.attr('x', 0)
@@ -35,14 +34,16 @@ function draw() {
 		.attr('cy', height/2)
 		.attr('r', diameter)
 		.style('fill', '#6DF7F2')
-		.style('fill-opacity', 0.5)
-		.attr('stroke', 'rgba(0,0,0,0)');
+		.style('fill-opacity', 0.3)
+		.attr('stroke-width', 1)
+		.attr('stroke', '#6DF7F2');
 
 	var circle_2 = g.append('circle')
 		.attr('cx', dx*2)
 		.attr('cy', height/2)
 		.attr('r', diameter)
 		.style('fill', '#0361FB')
-		.style('fill-opacity', 0.5)
-		.attr('stroke', 'rgba(0,0,0,0)');
+		.style('fill-opacity', 0.3)
+		.attr('stroke-width', 1)
+		.attr('stroke', '#0361FB');
 }

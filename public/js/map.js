@@ -23,19 +23,19 @@ var secondLayer = L.mapbox.featureLayer();
 var firstLayerStyle = {
 
 	fillColor: '#6DF7F2', // light blue
-	fillOpacity: 0.5,
+	fillOpacity: 0.3,
 	color: '#6DF7F2',
 	opacity: 1,
-	weight: 0
+	weight: 1
 };
 
 var secondLayerStyle = {
 
 	fillColor: '#0361FB', // blue
-	fillOpacity: 0.5,
+	fillOpacity: 0.3,
 	color: '#0361FB',
 	opacity: 1,
-	weight: 0
+	weight: 1
 };
 
 queue()
