@@ -17,17 +17,25 @@ baseLayer.setOpacity(0.6);
 baseLayer.addTo(map);
 
 var blockLayer = L.mapbox.featureLayer();
-var bikeLayer = L.mapbox.featureLayer();
-var busRouteLayer = L.mapbox.featureLayer();
-var busStopLayer = L.mapbox.featureLayer();
+var firstLayer = L.mapbox.featureLayer();
+var secondLayer = L.mapbox.featureLayer();
 
-var bostonBlockStyle = {
+var firstLayerStyle = {
 
-	fillColor: '#fff',
-	fillOpacity:0.1,
-	color: '#fff',
-	opacity: 0.2,
-	weight: 1
+	fillColor: '#ce55b1',
+	fillOpacity:0.3,
+	color: '#ce55b1',
+	opacity: 1,
+	weight: 3
+};
+
+var secondLayerStyle = {
+
+	fillColor: '#5575ce',
+	fillOpacity:0.3,
+	color: '#5575ce',
+	opacity: 1,
+	weight: 3
 };
 
 queue()
@@ -43,14 +51,9 @@ function ready(error, boston) {
 	L.geoJson(boston, {
 
 		onEachFeature: onEachFeature
+	}).addTo(blockLayer); 
 
-		// style: bostonBlockStyle,
-		// onEachFeature: function (feature, layer) {
-		//     layer.bindPopup("<h2>" + feature.properties.NAME10 + "</h2>");
-		// }
-	}).addTo(busRouteLayer); 
-
-	busRouteLayer.addTo(map);
+	blockLayer.addTo(map);
 }
 
 // function addPointLayer(data, thisLayer) {
@@ -92,5 +95,3 @@ function ready(error, boston) {
 
 // 	thisLayer.addTo(map);
 // }
-
-

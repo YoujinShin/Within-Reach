@@ -34,17 +34,15 @@ function draw() {
 		.attr('cx', dx)
 		.attr('cy', height/2)
 		.attr('r', diameter)
-		.style('fill', 'rgba(255, 235, 59,0.1)')
-		.attr('stroke', 'rgba(255, 235, 59,0.9)');
+		.style('fill', '#ce55b1')
+		.style('fill-opacity', 0.2)
+		.attr('stroke', '#ce55b1');
 
 	var circle_2 = g.append('circle')
 		.attr('cx', dx*2)
 		.attr('cy', height/2)
 		.attr('r', diameter*0.75)
-		.style('fill', 'rgba(255, 235, 59,0.1)')
-		.attr('stroke', 'rgba(255, 235, 59,0.9)');
-		// .attr('stroke', 'rgba(63, 81, 181,0.9)');
-
-
-
+		.style('fill', '#5575ce')
+		.style('fill-opacity', 0.2)
+		.attr('stroke', '#5575ce');
 }

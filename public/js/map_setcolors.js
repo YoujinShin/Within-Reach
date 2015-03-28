@@ -5,7 +5,7 @@ setLayerStyle = function(layer, type, alpha) {
 	// var defaultColor = '#55B1CE'; // light blue
 	var defaultColor = 'rgba(255,255,255,0.35)';
 
-	var selectedColor =  '#55B1CE';
+	var selectedColor =  '#55B1CE'; // light blue
 	// var selectedColor = '#ff4081';// pink
 	
 	switch(type) {
@@ -69,5 +69,4 @@ setLayerStyle = function(layer, type, alpha) {
 	}
 	
 	layer.setStyle(style);
-
 }

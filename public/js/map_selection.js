@@ -56,28 +56,68 @@ mouseClickLayer = function(e) {
 		
 	}
 
+	firstLayer.clearLayers();
+	secondLayer.clearLayers();
+
+	// get First ShapeFile
 	var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
 	var method = 'GET';
 	var xhr = createCORSRequest(method, url);
 
 	xhr.onload = function() {
-	  // Success code goes here.
 	  var json = JSON.parse(xhr.responseText);
-	  console.log(json);
+	  drawFirstArea(json);
 	};
 
 	xhr.onerror = function() {
-	  // Error code goes here.
 	  console.log('error');
 	};
 
-	xhr.send();
-		
+	xhr.send(); // sending a query
+
+	// get Second ShapeFile
+	var url2 = 'http://senseable3.mit.edu/within-reach/testShape2.geojson';
+	var method2 = 'GET';
+	var xhr2 = createCORSRequest(method2, url2);
+
+	xhr2.onload = function() {
+	  var json2 = JSON.parse(xhr2.responseText);
+	  drawSecondArea(json2);
+	};
+
+	xhr2.onerror = function() {
+	  console.log('error');
+	};
+
+	xhr2.send(); // sending a query
+}
+
+function drawFirstArea(data) {
+	L.geoJson(data, {
+
+		style: firstLayerStyle
+		// onEachFeature: function (feature, layer) {
+		//     layer.bindPopup("<h2>" + feature.properties.NAME10 + "</h2>");
+		// }
+	}).addTo(firstLayer); 
+
+	firstLayer.addTo(map);
+}
+
+function drawSecondArea(data) {
+	L.geoJson(data, {
+
+		style: secondLayerStyle
+		// onEachFeature: function (feature, layer) {
+		//     layer.bindPopup("<h2>" + feature.properties.NAME10 + "</h2>");
+		// }
+	}).addTo(firstLayer); 
+
+	firstLayer.addTo(map);
 }
 
 
-
-getInfos = function(e) {
+function getInfos(e) {
 
 	var mapId=e.target._map._container.id.split("map");
 		
