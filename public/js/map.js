@@ -49,6 +49,8 @@ queue()
 
 function ready(error, boston) {
 
+	// console.log(boston);
+
 	L.geoJson(boston, {
 
 		onEachFeature: onEachFeature

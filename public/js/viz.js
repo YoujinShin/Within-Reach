@@ -14,6 +14,10 @@ var g = svg.append('g')
 	.attr('height', height)
 	.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
+var tooltip = d3.select("body")
+		.append("div")
+		.attr("id", "tooltip");
+
 var gap = width/4;
 
 draw();

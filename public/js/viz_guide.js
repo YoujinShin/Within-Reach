@@ -20,62 +20,93 @@ function drawLayers() {
 		.attr('stroke', '#fff')
 		.attr('stroke-width', 1);
 
-	var diameter2 = 28;
-	var tg = (width/4 - 110 - 5 * diameter2)/3;
-	var x1 = gap + 110;
+	var diameter2 = 35;
+	// var tg = (width/4 - 110 - 5 * diameter2)/3; // for 3 circles
+	var tg = (width/4 - 110 - 25 - 3 * diameter2)/2; // for 2 circles
+	var x1 = gap + 110 + 25;
 	var x2 = x1 + 2 * diameter2 + tg;
 	var x3 = x2 + 2 * diameter2 + tg;
 
+	var img_1 = g.append("image")
+	   .attr('x', x1 - 20)
+	   .attr('y', height/2 - 20)
+	   .attr('width', 40)
+	   .attr('height', 40)
+	   .style('opacity', 0.8)
+	   .attr("xlink:href","bus2.png");
+
+	var img_2 = g.append("image")
+	   .attr('x', x2 - 20)
+	   .attr('y', height/2 - 20)
+	   .attr('width', 40)
+	   .attr('height', 40)
+	   .style('opacity', 0.9)
+	   .attr("xlink:href","bike2.png");
+
 	var layer_1 = g.append('circle') // blue: bus + walking
 		.attr('cx', x1)
-		.attr('cy', height/2 + 5 )
+		.attr('cy', height/2 + 0 )
 		.attr('r', diameter2)
 		.style('fill', '#fff')
-		.style('fill-opacity', 0.1)
-		.attr('stroke-width', 1.4)
+		.style('fill-opacity', 0.15)
+		.attr('stroke-width', 0)
 		.attr('stroke', 'rgba(255,255,255,0.7)')
 		.on("mouseover", function() {
 			d3.select(this).style('fill-opacity', 0.3);
+			tooltip.text("Bus Routes");
+			tooltip.style("visibility", "visible");
+		})
+		.on("mousemove", function(){
+			tooltip.style("top", (event.pageY- 40)+"px").style("left",(event.pageX -40)+"px");
 		})
 		.on("mouseout", function() {
-			d3.select(this).style('fill-opacity', 0.1);
+			d3.select(this).style('fill-opacity', 0.15);
+			tooltip.style("visibility", "hidden");
 		})
 		.on('click', function() {
+			
 		});
 
 	var layer_2 = g.append('circle') // blue: bus + walking
 		.attr('cx', x2)
-		.attr('cy', height/2 + 5 )
+		.attr('cy', height/2 + 0 )
 		.attr('r', diameter2)
 		.style('fill', '#fff')
-		.style('fill-opacity', 0.1)
-		.attr('stroke-width', 1.4)
+		.style('fill-opacity', 0.15)
+		.attr('stroke-width', 0)
 		.attr('stroke', 'rgba(255,255,255,0.7)')
 		.on("mouseover", function() {
 			d3.select(this).style('fill-opacity', 0.3);
+			tooltip.text("Hubway Station");
+			tooltip.style("visibility", "visible");
+		})
+		.on("mousemove", function(){
+			tooltip.style("top", (event.pageY- 40)+"px").style("left",(event.pageX -40)+"px");
 		})
 		.on("mouseout", function() {
-			d3.select(this).style('fill-opacity', 0.1);
+			d3.select(this).style('fill-opacity', 0.15);
+			tooltip.style("visibility", "hidden");
 		})
 		.on('click', function() {
+			
 		});
 
-	var layer_3 = g.append('circle') // blue: bus + walking
-		.attr('cx', x3)
-		.attr('cy', height/2 + 5 )
-		.attr('r', diameter2)
-		.style('fill', '#fff')
-		.style('fill-opacity', 0.1)
-		.attr('stroke-width', 1.4)
-		.attr('stroke', 'rgba(255,255,255,0.7)')
-		.on("mouseover", function() {
-			d3.select(this).style('fill-opacity', 0.3);
-		})
-		.on("mouseout", function() {
-			d3.select(this).style('fill-opacity', 0.1);
-		})
-		.on('click', function() {
-		});
+	// var layer_3 = g.append('circle') // blue: bus + walking
+	// 	.attr('cx', x3)
+	// 	.attr('cy', height/2 + 5 )
+	// 	.attr('r', diameter2)
+	// 	.style('fill', '#fff')
+	// 	.style('fill-opacity', 0.1)
+	// 	.attr('stroke-width', 1.4)
+	// 	.attr('stroke', 'rgba(255,255,255,0.7)')
+	// 	.on("mouseover", function() {
+	// 		d3.select(this).style('fill-opacity', 0.3);
+	// 	})
+	// 	.on("mouseout", function() {
+	// 		d3.select(this).style('fill-opacity', 0.1);
+	// 	})
+	// 	.on('click', function() {
+	// 	});
 }
 
 function drawTimeline() {
@@ -135,7 +166,7 @@ function drawButton() {
 			    return [d.x,d.y].join(",");
 			}).join(" ");
 			})
-			.style('fill', 'rgba(255,255,255,0.5)')
+			.style('fill', 'rgba(255,255,255,0.8)')
 			.attr("stroke","black")
 			.attr("stroke-width",0);
 
