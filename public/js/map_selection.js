@@ -44,7 +44,7 @@ mouseClickLayer = function(e) {
 		$('#container').css('visibility', 'visible');
 
 		setLayerStyle(e.target, "select");
-		map.setView([e.latlng.lat, e.latlng.lng], 13);
+		map.setView([e.latlng.lat, e.latlng.lng], 15);
 
 		// disable last clicked layer
 		if(lastClicked == 0) {
