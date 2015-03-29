@@ -29,7 +29,7 @@ function drawLayers() {
 	
 	var tg = (width/4-40)/2; 
 	var x1 = gap + 20 + diameter2;
-	var x2 = x1 + 130;
+	var x2 = x1 + 140;
 	// var x2 = x1 + tg;
 	var dy = 15;
 	var img_size = 32;
