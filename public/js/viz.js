@@ -14,12 +14,11 @@ var g = svg.append('g')
 	.attr('height', height)
 	.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
+var gap = width/4;
+
 draw();
 
 function draw() {
-
-	var diameter = 40;
-	var dx = width/9;
 
 	var bg = g.append('rect')
 		.attr('x', 0)
@@ -29,21 +28,100 @@ function draw() {
 		.style('fill', 'rgba(255,255,255,0)')
 		.attr('stroke', 'rgba(255,255,255,0)');
 
-	var circle_1 = g.append('circle')
+	drawLegend();
+	drawLayers();
+	drawTimeline();
+}
+
+function drawLegend() {
+
+	var diameter = 35;
+	var dx = 110;
+
+	var circle_2 = g.append('circle') // light blue: bus + walking + "bike"
 		.attr('cx', dx)
 		.attr('cy', height/2)
 		.attr('r', diameter)
 		.style('fill', '#6DF7F2')
-		.style('fill-opacity', 0.3)
+		.style('fill-opacity', 0.5)
 		.attr('stroke-width', 1)
-		.attr('stroke', '#6DF7F2');
+		.attr('stroke', '#6DF7F2');	
 
-	var circle_2 = g.append('circle')
-		.attr('cx', dx*2)
+	var circle_1 = g.append('circle') // blue: bus + walking
+		.attr('cx', dx)
 		.attr('cy', height/2)
-		.attr('r', diameter)
+		.attr('r', diameter*0.7)
 		.style('fill', '#0361FB')
-		.style('fill-opacity', 0.3)
+		.style('fill-opacity', 0.8)
 		.attr('stroke-width', 1)
 		.attr('stroke', '#0361FB');
+
+	var circle_1_1 = g.append('circle') // light blue: bus + walking + "bike"
+		.attr('cx', dx)
+		.attr('cy', height/2)
+		.attr('r', 2)
+		.style('fill', '#fff')
+		.style('fill-opacity', 1)
+		.attr('stroke-width', 0);
+
+	var circle_2_1 = g.append('circle') // blue: bus + walking
+		.attr('cx', dx)
+		.attr('cy', height/2 + diameter - 5)
+		.attr('r', 2)
+		.style('fill', '#fff')
+		.style('fill-opacity', 1)
+		.attr('stroke-width', 0);
+
+	var legend = g.append('text') // blue: bus + walking
+		.attr('x', 20)
+		.attr('y', 20)
+		.text('LEGEND')
+		.attr('class', 'legend')
+		.style('fill', '#fff')
+		.style('fill-opacity', 1)
+		.attr('text-anchor', 'start')
+		.attr('stroke', 'none');
+
+	var line_1 = g.append('line') // blue: bus + walking
+		.attr('x1', dx)
+		.attr('y1', height/2 )
+		.attr('x2', 160)
+		.attr('y2', height/2 )
+		.style('fill', '#fff')
+		.style('fill-opacity', 0)
+		.style("stroke-dasharray", ("1,3"))
+		.attr('stroke', '#fff')
+		.attr('stroke-width', 1);
+
+	var line_2 = g.append('line') // blue: bus + walking
+		.attr('x1', dx)
+		.attr('y1', height/2 + diameter - 5)
+		.attr('x2', 160)
+		.attr('y2', height/2 + diameter - 5)
+		.style('fill', '#fff')
+		.style('fill-opacity', 0)
+		.style("stroke-dasharray", ("1,3"))
+		.attr('stroke', '#fff')
+		.attr('stroke-width', 1);
+
+	var text_1 = g.append('text') // blue: bus + walking
+		.attr('x', 165)
+		.attr('y', height/2 + 4)
+		.text('Bus + Walking')
+		.attr('class', 'legend2')
+		.style('fill', '#fff')
+		.style('fill-opacity', 1)
+		.attr('text-anchor', 'start')
+		.attr('stroke', 'none');
+
+	var text_2 = g.append('text') // blue: bus + walking
+		.attr('x', 165)
+		.attr('y', height/2 + diameter - 1)
+		.text('Bus + Walking + Bike')
+		.attr('class', 'legend2')
+		.style('fill', '#fff')
+		.style('fill-opacity', 1)
+		.attr('text-anchor', 'start')
+		.attr('stroke', 'none');
 }
+

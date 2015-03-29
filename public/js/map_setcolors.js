@@ -3,12 +3,12 @@ setLayerStyle = function(layer, type, alpha) {
 	var style;
 	// var defaultColor = '#3F51B5'; // blue
 	// var defaultColor = '#55B1CE'; // light blue
-	var defaultColor = 'rgba(255,255,255,0.3)';
+	var defaultColor = 'rgba(255,255,255,0.25)';
 
 	// var selectedColor = '#55B1CE'; // light blue
-	var selectedColor = '#6DF7F2';  //lighter blue
-	// var selectedColor = '#65E6E6'; // considering additivie color
+	// var selectedColor = '#6DF7F2';  //lighter blue map
 	// var selectedColor = '#ff4081';// pink
+	var selectedColor = '#fff'; 
 	
 	switch(type) {
 		case "default":
@@ -31,8 +31,8 @@ setLayerStyle = function(layer, type, alpha) {
 			break;
 		case "over":
 			style={
-				weight: 2.3,
-				opacity: 0.7,
+				weight: 1.2,
+				opacity: 0.9,
 				color: selectedColor,
 				over:true
 			};
@@ -61,10 +61,11 @@ setLayerStyle = function(layer, type, alpha) {
 			break;
 		case "select":
 			style={
-				weight: 1.5,
-				fillOpacity: 0.3,
+				weight: 1,
+				fillOpacity: 0.2,
 				color: selectedColor,
 				fillColor: selectedColor,
+				opacity: 0.9,
 				active:true
 			};
 			break;

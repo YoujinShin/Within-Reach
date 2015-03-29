@@ -8,8 +8,8 @@ L.mapbox.accessToken = 'pk.eyJ1Ijoic2Vuc2VhYmxlIiwiYSI6ImxSNC1wc28ifQ.hst-boAjFC
 
 var map = L.map('map', {
 	minZoom: 11,
-	maxZoom: 15,
-	zoomControl: false
+	maxZoom: 15
+	// zoomControl: false
 }).setView([42.3133735 + 0.0, -71.0571571 - 0.04], 12);
 
 var baseLayer = L.mapbox.tileLayer('senseable.kakb3n74');
@@ -20,20 +20,20 @@ var blockLayer = L.mapbox.featureLayer();
 var firstLayer = L.mapbox.featureLayer();
 var secondLayer = L.mapbox.featureLayer();
 
-var firstLayerStyle = {
+var firstLayerStyle = { // blue: bus + walking
 
-	fillColor: '#6DF7F2', // light blue
-	fillOpacity: 0.3,
-	color: '#6DF7F2',
+	fillColor: '#0361FB', // blue
+	fillOpacity: 0.8,
+	color: '#0361FB',
 	opacity: 1,
 	weight: 1
 };
 
-var secondLayerStyle = {
+var secondLayerStyle = { // light blue: bus + walking + "bike"
 
-	fillColor: '#0361FB', // blue
-	fillOpacity: 0.3,
-	color: '#0361FB',
+	fillColor: '#6DF7F2', // light blue
+	fillOpacity: 0.5,
+	color: '#6DF7F2',
 	opacity: 1,
 	weight: 1
 };

@@ -10,11 +10,13 @@
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/css/main.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/viz.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/leaflet.label.css" rel="stylesheet">
 </head>
 
 <body>
-	<div id='title'><a href="/"><span class="strong">WITHIN </span>REACH</a></div>
+	<!-- <div id='title'><a href="/"><span class="strong">WITHIN </span>REACH</a></div> -->
+	<div id='title'><a href="/">BOSTON <span class="strong">WITHIN REACH</span></a></div>
 	<div id='about'>ABOUT</div>
 	<img src="close_button.png" id="close_button">
 	<!-- <div id='slogan'>Access capacity for 30 min in Boston City</div> -->
@@ -32,11 +34,15 @@
 	<script src="/js/queue.min.js"></script>
 
 	<!-- coding -->
-	<div id='map'></div>
+	<!-- <div id='map'></div> -->
+	<div id='map' class='dark'></div>
 
 	<!-- javascript -->
 	<script src="/js/main.js"></script>
+	
+	<script src="/js/viz_guide.js"></script>
 	<script src="/js/viz.js"></script>
+
 	<script src="/js/map_setcolors.js"></script>
 	<script src="/js/map_selection.js"></script>
 	<script src="/js/map.js"></script>

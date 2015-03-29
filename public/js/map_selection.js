@@ -44,7 +44,7 @@ mouseClickLayer = function(e) {
 		$('#container').css('visibility', 'visible');
 
 		setLayerStyle(e.target, "select");
-		map.setView([e.latlng.lat, e.latlng.lng], 14);
+		map.setView([e.latlng.lat, e.latlng.lng], 13);
 
 		// disable last clicked layer
 		if(lastClicked == 0) {
@@ -76,7 +76,6 @@ mouseClickLayer = function(e) {
 
 	xhr2.send(); // sending a query
 
-
 	// get First ShapeFile
 	var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
 	var method = 'GET';
@@ -95,6 +94,7 @@ mouseClickLayer = function(e) {
 }
 
 function drawFirstArea(data) {
+
 	L.geoJson(data, {
 
 		style: firstLayerStyle
@@ -107,17 +107,13 @@ function drawFirstArea(data) {
 }
 
 function drawSecondArea(data) {
-	L.geoJson(data, {
 
+	L.geoJson(data, {
 		style: secondLayerStyle
-		// onEachFeature: function (feature, layer) {
-		//     layer.bindPopup("<h2>" + feature.properties.NAME10 + "</h2>");
-		// }
 	}).addTo(secondLayer); 
 
 	secondLayer.setZIndex(1).addTo(map);
 }
-
 
 function getInfos(e) {
 
