@@ -32,22 +32,22 @@ function drawLayers() {
 	var x2 = x1 + 140;
 	// var x2 = x1 + tg;
 	var dy = 15;
-	var img_size = 32;
+	var img_size = 30;
 
 	var img_1 = g.append("image")
 	   .attr('x', x1 - img_size/2)
 	   .attr('y', height/2 - img_size/2 + dy)
 	   .attr('width', img_size)
 	   .attr('height', img_size)
-	   .style('opacity', 0.8)
+	   .style('opacity', 0.9)
 	   .attr("xlink:href","bus2.png");
 
 	var img_2 = g.append("image")
-	   .attr('x', x2 - img_size/2)
-	   .attr('y', height/2 - img_size/2 +dy)
-	   .attr('width', img_size)
-	   .attr('height', img_size)
-	   .style('opacity', 0.92)
+	   .attr('x', x2 - img_size/2*1.2)
+	   .attr('y', height/2 - img_size/2 +dy + 5)
+	   .attr('width', img_size*1.2)
+	   .attr('height', img_size*0.6*1.2)
+	   .style('opacity', 0.9)
 	   .attr("xlink:href","bike2.png");
 
 	var layer_1 = g.append('circle') // blue: bus + walking
