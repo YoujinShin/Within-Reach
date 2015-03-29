@@ -43,7 +43,7 @@ function drawLegend() {
 		.attr('cy', height/2)
 		.attr('r', diameter)
 		.style('fill', '#6DF7F2')
-		.style('fill-opacity', 0.5)
+		.style('fill-opacity', 0.3)
 		.attr('stroke-width', 1)
 		.attr('stroke', '#6DF7F2');	
 
@@ -52,7 +52,7 @@ function drawLegend() {
 		.attr('cy', height/2)
 		.attr('r', diameter*0.7)
 		.style('fill', '#0361FB')
-		.style('fill-opacity', 0.8)
+		.style('fill-opacity', 0.5)
 		.attr('stroke-width', 1)
 		.attr('stroke', '#0361FB');
 

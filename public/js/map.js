@@ -8,7 +8,7 @@ L.mapbox.accessToken = 'pk.eyJ1Ijoic2Vuc2VhYmxlIiwiYSI6ImxSNC1wc28ifQ.hst-boAjFC
 
 var map = L.map('map', {
 	minZoom: 11,
-	maxZoom: 15
+	maxZoom: 16
 	// zoomControl: false
 }).setView([42.3133735 + 0.0, -71.0571571 - 0.04], 12);
 
@@ -23,7 +23,8 @@ var secondLayer = L.mapbox.featureLayer();
 var firstLayerStyle = { // blue: bus + walking
 
 	fillColor: '#0361FB', // blue
-	fillOpacity: 0.8,
+	// fillOpacity: 0.8,
+	fillOpacity: 0.5,
 	color: '#0361FB',
 	opacity: 1,
 	weight: 1
@@ -32,7 +33,7 @@ var firstLayerStyle = { // blue: bus + walking
 var secondLayerStyle = { // light blue: bus + walking + "bike"
 
 	fillColor: '#6DF7F2', // light blue
-	fillOpacity: 0.5,
+	fillOpacity: 0.3,
 	color: '#6DF7F2',
 	opacity: 1,
 	weight: 1
