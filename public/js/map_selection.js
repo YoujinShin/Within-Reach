@@ -78,15 +78,15 @@ function mouseClickLayer(e) {
 		var xhr2 = createCORSRequest(method2, url2);
 
 		// First ShapeFile // Blue // Bus
-		var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
-		// var url = 'http://senseable3.mit.edu/within-reach/BUS_5_' + blockID +'.json';
+		// var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
+		var url = 'http://senseable3.mit.edu/within-reach/BUS_5_' + blockID +'.json';
 		// var url = 'http://senseable3.mit.edu/within-reach/BUS_5_' + '1860' +'.json';
 		var method = 'GET';
 		var xhr = createCORSRequest(method, url);
 
 		xhr2.onload = function() {
 			var json2 = JSON.parse(xhr2.responseText);
-			drawSecondArea(json2);
+			// drawSecondArea(json2);
 			xhr.send();
 		};
 
