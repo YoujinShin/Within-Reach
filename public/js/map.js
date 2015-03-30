@@ -21,7 +21,7 @@ var firstLayer = L.mapbox.featureLayer();
 var secondLayer = L.mapbox.featureLayer();
 
 var busRouteLayer = L.mapbox.tileLayer('senseable.bf7jh5mi');
-busRouteLayer.setOpacity(0.55);
+busRouteLayer.setOpacity(0.5);
 
 var bikeStationLayer = L.mapbox.tileLayer('senseable.r98gp66r');
 bikeStationLayer.setOpacity(0.9);

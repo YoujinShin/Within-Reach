@@ -45,7 +45,7 @@ function setLayerStyle2(layer, type, alpha) {
 			break;
 		case "over":
 			style={
-				weight: 3,
+				weight: 1,
 				over:true
 			};
 			break;

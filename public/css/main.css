@@ -83,6 +83,28 @@ h2 {
 	letter-spacing: 1px;
 }
 
+#heading {
+	position: relative;
+	font-size: 16px;
+	font-weight: 300;
+	color: rgba(255,255,255,1);
+	/*color: #0361FB;*/
+	padding: 2%;
+
+	width: 48%;
+	/*width: 96%;*/
+	padding-top: 16px;
+	padding-bottom: 16px;
+	background-color: rgba(255,255,255,0.1);
+	border-radius: 5px;
+}
+
+#contents {
+	position: relative;
+	left: 2%;
+	width: 46%;
+}
+
 .circle-icon {
 	border-radius: 50%;
 	width: 50px;
@@ -93,24 +115,25 @@ h2 {
 
 #about_container {
 	position: absolute;
-	text-align: center;
+	text-align: left;
 	z-index: 20;
 	left: 4%;
 	top: 22%;
-	height: 40%;
-	padding: 1%;
-	padding-top: 2%;
+	height: 300px;
+	padding: 3%;
+	/*padding-top: 2%;*/
 	border-radius: 10px;
 
-	width: 90%;
+	width: 86%;
 	/*height: 300px; */
 	background-color: rgba(0,0,0,0.63);
-	border: solid 1px rgba(255,255,255,0.3);
+	border: solid 2px rgba(255,255,255,0.3);
 	color: white;
 	font-family: 'Open Sans', sans-serif;
-	font-weight: 400;
-	font-size: 12px;
+	font-weight: 300;
+	font-size: 13px;
 	letter-spacing: 1px;
+	line-height: 186%;
 	/*visibility: hidden;*/
 }
 
@@ -130,9 +153,9 @@ h2 {
 
 #close_button {
 	position: absolute;
-	width: 18px;
-	height: 18px;
-	opacity: 0.6;
+	width: 13px;
+	height: 13px;
+	opacity: 0.8;
 	top: 24%;
 	right: 5%;
 	z-index: 24;

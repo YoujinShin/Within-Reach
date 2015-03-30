@@ -63,14 +63,20 @@ function mouseClickLayer(e) {
 	tempLayer.clearLayers();
 	map.removeLayer(markerLayer);
 
-	// get Second ShapeFile
+	// Second ShapeFile // Light blue
 	var url2 = 'http://senseable3.mit.edu/within-reach/testShape2.geojson';
 	var method2 = 'GET';
 	var xhr2 = createCORSRequest(method2, url2);
 
+	// First ShapeFile // Blue
+	var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
+	var method = 'GET';
+	var xhr = createCORSRequest(method, url);
+
 	xhr2.onload = function() {
 	  var json2 = JSON.parse(xhr2.responseText);
 	  drawSecondArea(json2);
+	  xhr.send();
 	};
 
 	xhr2.onerror = function() {
@@ -80,9 +86,9 @@ function mouseClickLayer(e) {
 	xhr2.send(); // sending a query
 
 	// get First ShapeFile
-	var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
-	var method = 'GET';
-	var xhr = createCORSRequest(method, url);
+	// var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
+	// var method = 'GET';
+	// var xhr = createCORSRequest(method, url);
 
 	xhr.onload = function() {
 	  var json = JSON.parse(xhr.responseText);
@@ -94,7 +100,7 @@ function mouseClickLayer(e) {
 	  console.log('error');
 	};
 
-	xhr.send(); // sending a query
+	// xhr.send(); // sending a query
 }
 
 function drawFirstArea(data) { // blue
