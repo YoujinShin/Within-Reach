@@ -160,7 +160,6 @@ function drawLayers() {
 		.style('fill-opacity', 0.65)
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
-
 }
 
 function drawTimeline() {
@@ -184,8 +183,6 @@ function drawTimeline() {
 		.style('fill-opacity', 0)
 		.attr('stroke', '#fff')
 		.attr('stroke-width', 1);
-
-	// var xScale = 
 
 	g.append('line') // blue: bus + walking
 		.attr('x1', gap*2+110)

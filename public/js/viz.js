@@ -128,4 +128,3 @@ function drawLegend() {
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
 }
-

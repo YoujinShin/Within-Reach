@@ -62,10 +62,10 @@ setLayerStyle = function(layer, type, alpha) {
 		case "select":
 			style={
 				weight: 1,
-				fillOpacity: 0.2,
+				fillOpacity: 0,
 				color: selectedColor,
 				fillColor: selectedColor,
-				opacity: 0.9,
+				opacity: 0,
 				active:true
 			};
 			break;

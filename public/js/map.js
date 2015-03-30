@@ -26,6 +26,17 @@ busRouteLayer.setOpacity(0.55);
 var bikeStationLayer = L.mapbox.tileLayer('senseable.r98gp66r');
 bikeStationLayer.setOpacity(0.9);
 
+var markerLayer = L.mapbox.featureLayer();
+
+var tempMarker = L.circle([ 0, 0 ], 14, {
+    color: '#fff',
+    opacity: 1,
+    weight: 0,
+    fillOpacity: 0.85
+}).addTo(markerLayer);
+
+var tempLayer = L.mapbox.featureLayer();
+
 var firstLayerStyle = { // blue: bus + walking
 
 	fillColor: '#0361FB', // blue
@@ -45,6 +56,15 @@ var secondLayerStyle = { // light blue: bus + walking + "bike"
 	weight: 1
 };
 
+var tempLayerStyle = { // light blue: bus + walking + "bike"
+
+	fillColor: '#6DF7F2', // light blue
+	fillOpacity: 0,
+	color: '#6DF7F2',
+	opacity: 0,
+	weight: 1
+};
+
 queue()
 	.defer(d3.json, "bostonBlock.geojson") // 7412
 	// .defer(d3.json, "hubwayStation.geojson") // 142 -> available for loading
@@ -55,8 +75,6 @@ queue()
 
 function ready(error, boston) {
 
-	// console.log(boston);
-
 	L.geoJson(boston, {
 
 		onEachFeature: onEachFeature
@@ -65,42 +83,3 @@ function ready(error, boston) {
 	blockLayer.addTo(map);
 }
 
-// function addPointLayer(data, thisLayer) {
-
-// 	L.geoJson(data, {
-
-// 		onEachFeature: onEachFeature(feature, layer)
-
-// 		// onEachFeature: function (feature, layer) {
-
-// 		// 	// layer.setIcon(L.mapbox.marker.icon({
-// 		// 	// 	//https://www.mapbox.com/maki/
-// 		// 	// 	// 'marker-symbol': 'circle', 
-// 		// 	// 	'marker-color': '#FFEB3B', //yellow
-// 		// 	// 	// 'marker-color': '59245f', // purple
-// 		// 	// 	'marker-size': 'small'
-// 		// 	// }));
-// 		// 	// layer.setOpacity(0.6);
-
-// 		// 	layer.setIcon(L.divIcon({
-
-// 		// 		className: 'circle-icon',
-// 		// 		iconSize: [10, 10]
-// 		// 	}));
-
-// 		//     layer.bindPopup("<h2>" + feature.properties.station + "</h2>");
-// 		// }
-// 	}).addTo(thisLayer); 
-
-// 	thisLayer.addTo(map);
-// }
-
-// function addBlockLayer(data, thisLayer) {
-
-// 	L.geoJson(data, {
-
-// 		style: bostonBlockStyle
-// 	}).addTo(thisLayer); 
-
-// 	thisLayer.addTo(map);
-// }
