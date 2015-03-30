@@ -68,39 +68,45 @@ function mouseClickLayer(e) {
 	map.removeLayer(markerLayer);
 
 	// Second ShapeFile // Light blue // Bike
-	var url2 = 'http://senseable3.mit.edu/within-reach/testShape2.geojson';
-	var method2 = 'GET';
-	var xhr2 = createCORSRequest(method2, url2);
+	// var url2 = 'http://senseable3.mit.edu/within-reach/testShape2.geojson';
 
-	// First ShapeFile // Blue // Bus
-	// var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
-	var url = 'http://senseable3.mit.edu/within-reach/BUS_5_' + blockID +'.json';
-	var method = 'GET';
-	var xhr = createCORSRequest(method, url);
+	// if (blockID == 1860 || blockID == 5101) {
+		var url2 = 'http://senseable3.mit.edu/within-reach/testShape2.geojson';
+		// var url2 = 'http://senseable3.mit.edu/within-reach/bike_5_' + blockID +'.geojson';
+		// var url2 = 'http://senseable3.mit.edu/within-reach/bike_5_' + '1860' +'.geojson';
+		var method2 = 'GET';
+		var xhr2 = createCORSRequest(method2, url2);
 
-	xhr2.onload = function() {
-		var json2 = JSON.parse(xhr2.responseText);
-		// drawSecondArea(json2);
-		xhr.send();
-	};
+		// First ShapeFile // Blue // Bus
+		var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
+		// var url = 'http://senseable3.mit.edu/within-reach/BUS_5_' + blockID +'.json';
+		// var url = 'http://senseable3.mit.edu/within-reach/BUS_5_' + '1860' +'.json';
+		var method = 'GET';
+		var xhr = createCORSRequest(method, url);
 
-	xhr2.onerror = function() {
-		console.log('error');
-	};
+		xhr2.onload = function() {
+			var json2 = JSON.parse(xhr2.responseText);
+			drawSecondArea(json2);
+			xhr.send();
+		};
 
-	xhr2.send(); // sending a query
+		xhr2.onerror = function() {
+			console.log('error');
+		};
 
-	xhr.onload = function() {
-		var json = JSON.parse(xhr.responseText);
-		drawFirstArea(json);
-		getCenter(infos.geometry);
-	};
+		xhr2.send(); // sending a query
 
-	xhr.onerror = function() {
-		console.log('error');
-	};
+		xhr.onload = function() {
+			var json = JSON.parse(xhr.responseText);
+			drawFirstArea(json);
+			getCenter(infos.geometry);
+		};
 
-	// xhr.send(); // sending a query
+		xhr.onerror = function() {
+			console.log('error');
+		};
+	// };
+	
 }
 
 function drawFirstArea(data) { // blue

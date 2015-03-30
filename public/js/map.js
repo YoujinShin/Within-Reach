@@ -28,7 +28,7 @@ bikeStationLayer.setOpacity(0.9);
 
 var markerLayer = L.mapbox.featureLayer();
 
-var tempMarker = L.circle([ 0, 0 ], 60, {
+var tempMarker = L.circle([ 0, 0 ], 20, { // 60
     color: '#fff',
     opacity: 1,
     weight: 0,
