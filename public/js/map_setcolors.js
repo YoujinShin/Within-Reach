@@ -1,4 +1,4 @@
-setLayerStyle = function(layer, type, alpha) {
+function setLayerStyle(layer, type, alpha) {
 
 	var style;
 	// var defaultColor = '#3F51B5'; // blue

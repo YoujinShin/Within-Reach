@@ -29,7 +29,7 @@ function mouseOutLayer(e) {
 
 var lastClicked = 0;
 
-mouseClickLayer = function(e) {
+function mouseClickLayer(e) {
 
 	var infos=getInfos(e);
 	// console.log(infos.geometry);
@@ -40,7 +40,7 @@ mouseClickLayer = function(e) {
 
 		setLayerStyle(e.target, "unselect");
 		map.setView([42.3133735 + 0.0, -71.0571571 - 0.04], 12);
-		map.removeLayer(markerLayer);
+		// map.removeLayer(markerLayer);
 	} else {
 
 		$('#container').css('visibility', 'visible');
@@ -55,11 +55,13 @@ mouseClickLayer = function(e) {
 			setLayerStyle(lastClicked, "unselect");
 			lastClicked = e.target;
 		}
+
 	}
 
 	firstLayer.clearLayers();
 	secondLayer.clearLayers();
 	tempLayer.clearLayers();
+	map.removeLayer(markerLayer);
 
 	// get Second ShapeFile
 	var url2 = 'http://senseable3.mit.edu/within-reach/testShape2.geojson';
@@ -99,10 +101,9 @@ function drawFirstArea(data) { // blue
 
 	L.geoJson(data, {
 
-		style: firstLayerStyle
-		// onEachFeature: function (feature, layer) {
-		//     layer.bindPopup("<h2>" + feature.properties.NAME10 + "</h2>");
-		// }
+		style: firstLayerStyle,
+		onEachFeature: onEachFeature2
+
 	}).addTo(firstLayer); 
 
 	firstLayer.setZIndex(1).addTo(map);
@@ -112,7 +113,8 @@ function drawFirstArea(data) { // blue
 function drawSecondArea(data) { // light blue
 
 	L.geoJson(data, {
-		style: secondLayerStyle
+		style: secondLayerStyle,
+		onEachFeature: onEachFeature2
 	}).addTo(secondLayer); 
 
 	secondLayer.setZIndex(1).addTo(map);
