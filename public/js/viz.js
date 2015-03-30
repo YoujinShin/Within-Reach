@@ -20,6 +20,15 @@ var tooltip = d3.select("body")
 
 var gap = width/4;
 
+var xScale = d3.scale.linear()
+    .domain([0, 24])
+    .range([gap*2 + 110, width - 40]);
+
+var yScale = d3.scale.linear()
+	.domain([0, 10])
+	.range([height-10, 20]);
+
+
 draw();
 
 function draw() {

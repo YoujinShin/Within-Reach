@@ -1,12 +1,14 @@
 function onEachFeature(feature, layer) {
 
+	setLayerStyle(layer, "default");
+
 	layer.on({
 		mouseover: mouseOverLayer,
 		mouseout: mouseOutLayer,
 		click: mouseClickLayer
 	});
 	
-	setLayerStyle(layer, "default");
+	
 	// layer.bindLabel(feature.properties.NAME10);
 }
 
@@ -19,6 +21,7 @@ function mouseOverLayer(e) {
 function mouseOutLayer(e) {
 
 	var infos=getInfos(e);
+	// console.log(infos);
 
 	if(infos.style.active) {
 		setLayerStyle(e.target, "select");
@@ -32,7 +35,8 @@ var lastClicked = 0;
 function mouseClickLayer(e) {
 
 	var infos=getInfos(e);
-	// console.log(infos.geometry);
+	var blockID = infos.properties.FID_1;
+	// console.log(infos.properties);
 
 	if(infos.style.active) {
 
@@ -46,7 +50,7 @@ function mouseClickLayer(e) {
 		$('#container').css('visibility', 'visible');
 
 		setLayerStyle(e.target, "select");
-		map.setView([e.latlng.lat, e.latlng.lng], 15);
+		map.setView([e.latlng.lat, e.latlng.lng], 12);
 
 		// disable last clicked layer
 		if(lastClicked == 0) {
@@ -63,41 +67,37 @@ function mouseClickLayer(e) {
 	tempLayer.clearLayers();
 	map.removeLayer(markerLayer);
 
-	// Second ShapeFile // Light blue
+	// Second ShapeFile // Light blue // Bike
 	var url2 = 'http://senseable3.mit.edu/within-reach/testShape2.geojson';
 	var method2 = 'GET';
 	var xhr2 = createCORSRequest(method2, url2);
 
-	// First ShapeFile // Blue
-	var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
+	// First ShapeFile // Blue // Bus
+	// var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
+	var url = 'http://senseable3.mit.edu/within-reach/BUS_5_' + blockID +'.json';
 	var method = 'GET';
 	var xhr = createCORSRequest(method, url);
 
 	xhr2.onload = function() {
-	  var json2 = JSON.parse(xhr2.responseText);
-	  drawSecondArea(json2);
-	  xhr.send();
+		var json2 = JSON.parse(xhr2.responseText);
+		// drawSecondArea(json2);
+		xhr.send();
 	};
 
 	xhr2.onerror = function() {
-	  console.log('error');
+		console.log('error');
 	};
 
 	xhr2.send(); // sending a query
 
-	// get First ShapeFile
-	// var url = 'http://senseable3.mit.edu/within-reach/testShape1.geojson';
-	// var method = 'GET';
-	// var xhr = createCORSRequest(method, url);
-
 	xhr.onload = function() {
-	  var json = JSON.parse(xhr.responseText);
-	  drawFirstArea(json);
-	  getCenter(infos.geometry);
+		var json = JSON.parse(xhr.responseText);
+		drawFirstArea(json);
+		getCenter(infos.geometry);
 	};
 
 	xhr.onerror = function() {
-	  console.log('error');
+		console.log('error');
 	};
 
 	// xhr.send(); // sending a query

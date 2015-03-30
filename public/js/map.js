@@ -28,7 +28,7 @@ bikeStationLayer.setOpacity(0.9);
 
 var markerLayer = L.mapbox.featureLayer();
 
-var tempMarker = L.circle([ 0, 0 ], 14, {
+var tempMarker = L.circle([ 0, 0 ], 60, {
     color: '#fff',
     opacity: 1,
     weight: 0,
@@ -66,7 +66,8 @@ var tempLayerStyle = { // light blue: bus + walking + "bike"
 };
 
 queue()
-	.defer(d3.json, "bostonBlock.geojson") // 7412
+	// .defer(d3.json, "bostonBlocks.geojson") // 7412
+	.defer(d3.json, "bostonFinal.geojson") // 7412
 	// .defer(d3.json, "hubwayStation.geojson") // 142 -> available for loading
  	// .defer(d3.json, "busRoutes.geojson") // 765
 	// .defer(d3.json, "busStops.geojson") // 7678
@@ -74,6 +75,8 @@ queue()
 	.await(ready);
 
 function ready(error, boston) {
+
+	// console.log(boston);
 
 	L.geoJson(boston, {
 
