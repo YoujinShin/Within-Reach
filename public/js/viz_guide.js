@@ -1,3 +1,6 @@
+var layer_1_active = false;
+var layer_2_active = false;
+
 function drawLayers() {
 
 	var layers = g.append('text') // blue: bus + walking
@@ -50,14 +53,14 @@ function drawLayers() {
 	   .style('opacity', 0.9)
 	   .attr("xlink:href","bike2.png");
 
-	var layer_1 = g.append('circle') // blue: bus + walking
+	var layer_1 = g.append('circle') // bus route layer
 		.attr('cx', x1)
 		.attr('cy', height/2 + dy)
 		.attr('r', diameter2)
 		.style('fill', '#fff')
 		.style('fill-opacity', 0.15)
-		.attr('stroke-width', 0)
-		.attr('stroke', 'rgba(255,255,255,0.7)')
+		.attr('stroke-width', 0.9)
+		.attr('stroke', 'rgba(255,255,255,0.2)')
 		.on("mouseover", function() {
 			d3.select(this).style('fill-opacity', 0.3);
 			// tooltip.text("Bus Routes");
@@ -71,24 +74,33 @@ function drawLayers() {
 			tooltip.style("visibility", "hidden");
 		})
 		.on('click', function() {
-			
+			if(layer_1_active) { // true
+				d3.select(this).attr('stroke', 'rgba(255,255,255,0.2)');
+				layer_1_active = false;
+				map.removeLayer(busRouteLayer);
+			} else {
+				// d3.select(this).attr('stroke', '#76f013'); // green
+				d3.select(this).attr('stroke', '#fdf733'); // yellow
+				layer_1_active = true;
+				
+				busRouteLayer.addTo(map);
+			}
+
+
 		});
 
-	var layer_2 = g.append('circle') // blue: bus + walking
+	var layer_2 = g.append('circle') // bike station layer
 		.attr('cx', x2)
 		.attr('cy', height/2 + dy )
 		.attr('r', diameter2)
 		.style('fill', '#fff')
 		.style('fill-opacity', 0.15)
-		.attr('stroke-width', 0)
-		.attr('stroke', 'rgba(255,255,255,0.7)')
+		.attr('stroke-width', 0.9)
+		.attr('stroke', 'rgba(255,255,255,0.2)')
 		.on("mouseover", function() {
 			d3.select(this).style('fill-opacity', 0.3);
-			// tooltip.text("Hubway Station");
-			// tooltip.style("visibility", "visible");
 		})
 		.on("mousemove", function(){
-			// tooltip.style("top", (event.pageY- 40)+"px").style("left",(event.pageX -40)+"px");
 		})
 		.on("mouseout", function() {
 			d3.select(this).style('fill-opacity', 0.15);
@@ -96,6 +108,17 @@ function drawLayers() {
 		})
 		.on('click', function() {
 			
+			if(layer_2_active) { // true
+				d3.select(this).attr('stroke', 'rgba(255,255,255,0.2)');
+				layer_2_active = false;
+				map.removeLayer(bikeStationLayer);
+			} else {
+				// d3.select(this).attr('stroke', '#fdf733'); // yellow
+				// d3.select(this).attr('stroke', '#ed462f'); // orange
+				d3.select(this).attr('stroke', '#76f013');  // green
+				layer_2_active = true;
+				bikeStationLayer.addTo(map);
+			}
 		});
 
 	var text_1 =  g.append('text') // blue: bus + walking

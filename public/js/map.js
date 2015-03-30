@@ -20,6 +20,12 @@ var blockLayer = L.mapbox.featureLayer();
 var firstLayer = L.mapbox.featureLayer();
 var secondLayer = L.mapbox.featureLayer();
 
+var busRouteLayer = L.mapbox.tileLayer('senseable.bf7jh5mi');
+busRouteLayer.setOpacity(0.55);
+
+var bikeStationLayer = L.mapbox.tileLayer('senseable.r98gp66r');
+bikeStationLayer.setOpacity(0.9);
+
 var firstLayerStyle = { // blue: bus + walking
 
 	fillColor: '#0361FB', // blue
