@@ -3,6 +3,7 @@ body {
 	padding: 0; 
 	background-color: black;
 	color: rgba(255,255,255,0.9);
+	min-width: 1200px;
 }
 
 #diagram {
@@ -19,6 +20,7 @@ body {
 #map { 
 	position:absolute; top:0; bottom:0; width:100%; 
 	background-color: black;
+	min-width: 1200px;
 }
 
 h2 {
@@ -50,8 +52,9 @@ h2 {
 
 #about {
 	position: absolute;
+	text-align: right;
 	top: 25px;
-	right: 4%;
+	/*right: 4%;*/
 
 	z-index: 20;
 	padding: 8px;

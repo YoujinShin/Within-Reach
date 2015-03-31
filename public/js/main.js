@@ -12,10 +12,15 @@ $('#about').click(function() {
 	$('#about_container').css('visibility', 'visible');
 });
 
+// console.log($( window ).width()); // change by window size
+// console.log(screen.width); // original screen size
+console.log($( "body" ).width());
 
 // Position
-// var w = screen.width;
-// var h = screen.height;
+var w = $( "body" ).width();
+$('#about').css('right', w*0.04);
+// $('#about_container').css('top', ty);
+
 // var tx = 0;
 // var ty = 0;
 

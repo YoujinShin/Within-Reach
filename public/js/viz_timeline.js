@@ -116,7 +116,9 @@ function updateBar(t, id) {
 	var h = yScale(0) - yScale(currentArea);
 	// console.log(d + '->' + h);
 
-	bar.attr('y', yScale(currentArea))
+	bar.transition()
+        .duration(330)
+	.attr('y', yScale(currentArea))
 		.attr('height',h);
 }
 
@@ -126,7 +128,9 @@ function updateBar_bike(t, id) {
 	var h = yScale(0) - yScale(currentArea);
 	// console.log(d + '->' + h);
 
-	bar_bike.attr('y', yScale(currentArea))
+	bar_bike.transition()
+        .duration(330)
+	.attr('y', yScale(currentArea))
 		.attr('height',h);
 }
 
