@@ -28,7 +28,7 @@ bikeStationLayer.setOpacity(0.9);
 
 var markerLayer = L.mapbox.featureLayer();
 
-var tempMarker = L.circle([ 0, 0 ], 100, { // 60
+var tempMarker = L.circle([ 0, 0 ], 90, { // 60
     color: '#fff',
     opacity: 1,
     weight: 0,
@@ -41,7 +41,7 @@ var firstLayerStyle = { // blue: bus + walking
 
 	fillColor: '#0361FB', // blue
 	// fillOpacity: 0.8,
-	fillOpacity: 0.5,
+	fillOpacity: 0.46,
 	color: '#0361FB',
 	opacity: 1,
 	weight: 1
@@ -49,18 +49,11 @@ var firstLayerStyle = { // blue: bus + walking
 
 var secondLayerStyle = { // light blue: bus + walking + "bike"
 
-	// fillColor: '#0361FB', // blue
-	// // fillOpacity: 0.8,
-	// fillOpacity: 0.5,
-	// color: '#0361FB',
-	// opacity: 1,
-	// weight: 1
-
 	fillColor: '#6DF7F2', // light blue
-	fillOpacity: 0.1,
+	fillOpacity: 0.2,
 	color: '#6DF7F2',
-	opacity: 0.6,
-	weight: 1
+	opacity: 1,
+	weight: 0.3
 };
 
 var tempLayerStyle = { // light blue: bus + walking + "bike"

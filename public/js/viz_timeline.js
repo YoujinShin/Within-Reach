@@ -10,6 +10,26 @@ function drawTimeline() {
 		.style('fill-opacity', 1)
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
+
+	// g.append('text') 
+	// 	.attr('x', gap*2 + 20)
+	// 	.attr('y', 50)
+	// 	.text('Reachability ')
+	// 	.attr('class', 'legend2')
+	// 	.style('fill', '#fff')
+	// 	.style('fill-opacity', 0.6)
+	// 	.attr('text-anchor', 'start')
+	// 	.attr('stroke', 'none');
+
+	g.append('text') 
+		.attr('x', gap*2 + 20)
+		.attr('y', 40)
+		.text('Area (sqm)')
+		.attr('class', 'legend2')
+		.style('fill', '#fff')
+		.style('fill-opacity', 0.5)
+		.attr('text-anchor', 'start')
+		.attr('stroke', 'none');
  
 	g.append('line') // left line
 		.attr('x1', gap*2+7)
@@ -22,9 +42,8 @@ function drawTimeline() {
 		.attr('stroke-width', 1);
 
 
-	drawButton();
+	// drawButton();
 	getDots();
-
 	drawBar_bike();
 	drawBar();
 

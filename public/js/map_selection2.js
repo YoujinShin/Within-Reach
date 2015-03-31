@@ -11,7 +11,7 @@ function onEachFeature2(feature, layer) {
 
 function mouseOverLayer2(e) {
 
-	setLayerStyle2(e.target, "over");
+	// setLayerStyle2(e.target, "over");
 }
 
 function mouseOutLayer2(e) {
@@ -19,9 +19,9 @@ function mouseOutLayer2(e) {
 	var infos=getInfos(e);
 
 	if(infos.style.active) {
-		setLayerStyle2(e.target, "select");
+		// setLayerStyle2(e.target, "select");
 	} else {
-		setLayerStyle2(e.target, "out");
+		// setLayerStyle2(e.target, "out");
 	}
 }
 
