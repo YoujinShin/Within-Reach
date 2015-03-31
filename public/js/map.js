@@ -68,15 +68,17 @@ var tempLayerStyle = { // light blue: bus + walking + "bike"
 queue()
 	// .defer(d3.json, "bostonBlocks.geojson") // 7412
 	.defer(d3.json, "bostonFinal.geojson") // 7412
+	.defer(d3.csv, "bus_5_table.csv")
 	// .defer(d3.json, "hubwayStation.geojson") // 142 -> available for loading
  	// .defer(d3.json, "busRoutes.geojson") // 765
 	// .defer(d3.json, "busStops.geojson") // 7678
 	// .defer(d3.json, "CDD_ZoningDistricts.geojson")
 	.await(ready);
 
-function ready(error, boston) {
 
-	// console.log(boston);
+function ready(error, boston, area) {
+
+	busArea = area;
 
 	L.geoJson(boston, {
 

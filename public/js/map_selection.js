@@ -36,6 +36,7 @@ function mouseClickLayer(e) {
 
 	var infos=getInfos(e);
 	var blockID = infos.properties.FID_1;
+	// var blockArea = infos.properties.AREA_ACRES;
 	// console.log(infos.properties);
 
 	if(infos.style.active) {
@@ -66,6 +67,10 @@ function mouseClickLayer(e) {
 	secondLayer.clearLayers();
 	tempLayer.clearLayers();
 	map.removeLayer(markerLayer);
+
+	//Viz
+	updateBar(5, blockID);
+	// console.log(busArea);
 
 	// Second ShapeFile // Light blue // Bike
 	// var url2 = 'http://senseable3.mit.edu/within-reach/testShape2.geojson';
@@ -119,6 +124,8 @@ function drawFirstArea(data) { // blue
 	}).addTo(firstLayer); 
 
 	firstLayer.setZIndex(1).addTo(map);
+
+	// console.log(data);
 
 }
 

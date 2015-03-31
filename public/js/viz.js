@@ -25,8 +25,10 @@ var xScale = d3.scale.linear()
     .range([gap*2 + 110, width - 40]);
 
 var yScale = d3.scale.linear()
-	.domain([0, 10])
-	.range([height-10, 20]);
+	.domain([0, 90000000])
+	// .domain([0, 79768207])
+	// .range([20, height-10]);
+	.range([height-10, 40]);
 
 
 draw();
@@ -44,6 +46,7 @@ function draw() {
 	drawLegend();
 	drawLayers();
 	drawTimeline();
+	drawBar();
 }
 
 function drawLegend() {

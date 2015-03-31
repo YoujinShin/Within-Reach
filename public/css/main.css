@@ -8,7 +8,7 @@ body {
 #diagram {
 	position: absolute;
 	/*width: 430px;*/
-	top: 150px;
+	top: 153px;
 	left: 55%;
 	height: 180px;
 
@@ -145,9 +145,9 @@ h2 {
 	color: white;
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
-	font-size: 14px;
+	font-size: 13px;
 	letter-spacing: 1px;
-	line-height: 170%;
+	line-height: 140%;
 	/*visibility: hidden;*/
 }
 

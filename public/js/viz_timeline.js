@@ -1,7 +1,7 @@
 
 function drawTimeline() {
 
-	var timeline = g.append('text') // blue: bus + walking
+	var timeline = g.append('text') 
 		.attr('x', gap*2 + 20)
 		.attr('y', 20)
 		.text('TIMELINE')
@@ -10,8 +10,8 @@ function drawTimeline() {
 		.style('fill-opacity', 1)
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
-
-	g.append('line') // blue: bus + walking
+ 
+	g.append('line') // left line
 		.attr('x1', gap*2+7)
 		.attr('y1', 10 )
 		.attr('x2', gap*2+7)
@@ -21,7 +21,7 @@ function drawTimeline() {
 		.attr('stroke', '#fff')
 		.attr('stroke-width', 1);
 
-	var bottomLine = g.append('line') // blue: bus + walking
+	var bottomLine = g.append('line') 
 		.attr('x1', xScale(0))
 		.attr('y1', yScale(0) )
 		.attr('x2', xScale(24))
@@ -34,6 +34,55 @@ function drawTimeline() {
 
 	drawButton();
 	getDots();
+	drawBar();
+}
+
+var busArea;
+
+function drawBar() {
+
+	var w = xScale(1) - xScale(0);
+
+	bar = g.append('rect')
+		.attr('x', xScale(5))
+		.attr('y', yScale(0))
+		.attr('width', w)
+		.attr('height', 0)
+		.style('fill', '#0361FB')
+		.style('fill-opacity', 0.5)
+		.attr('stroke', 'rgba(0,0,0,0)');
+}
+
+function updateBar(t, id) {
+
+	var currentArea = getArea(id);
+	// console.log(currentArea);
+
+	// // var yScale = d3.scale.linear()
+	// // .domain([0, 10])
+	// // .range([height-10, 20]);
+
+	// if(d > 10) { d = 10; }
+
+	var h = yScale(0) - yScale(currentArea);
+	// console.log(d + '->' + h);
+
+	bar.attr('x', xScale(t))
+		.attr('y', yScale(currentArea))
+		.attr('height',h);
+}
+
+function getArea(id) {
+
+	// console.log(id);
+	
+	for(var i = 0; i< busArea.length; i++) {
+
+		var tempId = busArea[i].FacilityID - 1;
+		if(id == tempId) {
+			return busArea[i].Area;
+		}
+	}
 }
 
 function getDots() {
