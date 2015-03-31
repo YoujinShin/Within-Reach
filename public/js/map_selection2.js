@@ -6,7 +6,7 @@ function onEachFeature2(feature, layer) {
 		click: mouseClickLayer2
 	});
 	
-	setLayerStyle2(layer, "default");
+	// setLayerStyle2(layer, "default");
 }
 
 function mouseOverLayer2(e) {
@@ -39,8 +39,8 @@ function setLayerStyle2(layer, type, alpha) {
 	switch(type) {
 		case "default":
 			style = {
-				fillOpacity: 0.5,
-				weight: 1
+				fillOpacity: 0.3,
+				weight: 0
 			};
 			break;
 		case "over":
@@ -63,7 +63,7 @@ function setLayerStyle2(layer, type, alpha) {
 			break;
 		case "select":
 			style={
-				weight: 2,
+				weight: 0,
 				active:true
 			};
 			break;

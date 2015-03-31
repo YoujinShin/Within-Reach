@@ -70,14 +70,15 @@ function mouseClickLayer(e) {
 
 	//Viz
 	updateBar(5, blockID);
+	updateBar_bike(5, blockID);
 	// console.log(busArea);
 
 	// Second ShapeFile // Light blue // Bike
 	// var url2 = 'http://senseable3.mit.edu/within-reach/testShape2.geojson';
 
 	// if (blockID == 1860 || blockID == 5101) {
-		var url2 = 'http://senseable3.mit.edu/within-reach/testShape2.geojson';
-		// var url2 = 'http://senseable3.mit.edu/within-reach/bike_5_' + blockID +'.geojson';
+		// var url2 = 'http://senseable3.mit.edu/within-reach/testShape2.geojson';
+		var url2 = 'http://senseable3.mit.edu/within-reach/bicycle_5_' + blockID +'.json';
 		// var url2 = 'http://senseable3.mit.edu/within-reach/bike_5_' + '1860' +'.geojson';
 		var method2 = 'GET';
 		var xhr2 = createCORSRequest(method2, url2);
@@ -91,7 +92,7 @@ function mouseClickLayer(e) {
 
 		xhr2.onload = function() {
 			var json2 = JSON.parse(xhr2.responseText);
-			// drawSecondArea(json2);
+			drawSecondArea(json2);
 			xhr.send();
 		};
 

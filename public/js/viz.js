@@ -25,10 +25,10 @@ var xScale = d3.scale.linear()
     .range([gap*2 + 110, width - 40]);
 
 var yScale = d3.scale.linear()
-	.domain([0, 144451685])
+	.domain([0, 649326064])
 	// .domain([0, 79768207])
 	// .range([20, height-10]);
-	.range([height-10, 40]);
+	.range([height-10, 20]);
 
 
 draw();

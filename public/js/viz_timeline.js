@@ -21,10 +21,18 @@ function drawTimeline() {
 		.attr('stroke', '#fff')
 		.attr('stroke-width', 1);
 
+
+	drawButton();
+	getDots();
+
+	drawBar_bike();
+	drawBar();
+
+
 	var bottomLine = g.append('line') 
 		.attr('x1', xScale(0))
 		.attr('y1', yScale(0) )
-		.attr('x2', xScale(24))
+		.attr('x2', xScale(24) )
 		.attr('y2', yScale(0))
 		.style('fill', 'rgba(0,0,0,0.2)')
 		.style('fill-opacity', 0)
@@ -32,9 +40,15 @@ function drawTimeline() {
 		.attr('stroke-width', 1);
 		// .style("stroke-dasharray", ("1,3"))
 
-	drawButton();
-	getDots();
-	drawBar();
+	var topLine = g.append('line') 
+		.attr('x1', xScale(0))
+		.attr('y1', yScale(649326064) )
+		.attr('x2', xScale(24))
+		.attr('y2', yScale(649326064))
+		.style('fill', 'rgba(0,0,0,0)')
+		.attr('stroke', 'rgba(255,255,255,0.2)')
+		.attr('stroke-width', 1);
+		// .style("stroke-dasharray", ("1,3"));
 }
 
 var busArea;
@@ -44,43 +58,67 @@ function drawBar() {
 	var w = xScale(1) - xScale(0);
 
 	bar = g.append('rect')
-		.attr('x', xScale(5))
+		.attr('x', xScale(5) + 3)
 		.attr('y', yScale(0))
-		.attr('width', w)
+		.attr('width', w - 6)
 		.attr('height', 0)
 		.style('fill', '#0361FB')
-		.style('fill-opacity', 0.5)
+		.style('fill-opacity', 0.8)
+		.attr('stroke', 'rgba(0,0,0,0)');
+}
+
+function drawBar_bike() {
+
+	var w = xScale(1) - xScale(0);
+
+	bar_bike = g.append('rect')
+		.attr('x', xScale(5) + 3)
+		.attr('y', yScale(0))
+		.attr('width', w - 6)
+		.attr('height', 0)
+		.style('fill', '#6DF7F2') // light blue
+		.style('fill-opacity', 0.8)
 		.attr('stroke', 'rgba(0,0,0,0)');
 }
 
 function updateBar(t, id) {
 
 	var currentArea = getArea(id);
-	// console.log(currentArea);
-
-	// // var yScale = d3.scale.linear()
-	// // .domain([0, 10])
-	// // .range([height-10, 20]);
-
-	// if(d > 10) { d = 10; }
-
 	var h = yScale(0) - yScale(currentArea);
 	// console.log(d + '->' + h);
 
-	bar.attr('x', xScale(t))
-		.attr('y', yScale(currentArea))
+	bar.attr('y', yScale(currentArea))
+		.attr('height',h);
+}
+
+function updateBar_bike(t, id) {
+
+	var currentArea = getArea_bike(id);
+	var h = yScale(0) - yScale(currentArea);
+	// console.log(d + '->' + h);
+
+	bar_bike.attr('y', yScale(currentArea))
 		.attr('height',h);
 }
 
 function getArea(id) {
 
-	// console.log(id);
-	
 	for(var i = 0; i< busArea.length; i++) {
 
 		var tempId = busArea[i].FacilityID - 1;
 		if(id == tempId) {
 			return busArea[i].Area;
+		}
+	}
+}
+
+function getArea_bike(id) {
+
+	for(var i = 0; i< bikeArea.length; i++) {
+
+		var tempId = bikeArea[i].FacilityID - 1;
+		if(id == tempId) {
+			return bikeArea[i].Area;
 		}
 	}
 }
