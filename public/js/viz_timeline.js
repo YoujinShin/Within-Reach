@@ -69,15 +69,15 @@ function drawTimeline() {
 		.attr('stroke-width', 1);
 		// .style("stroke-dasharray", ("1,3"));
 
-	// g.append('text') 
-	// 	.attr('x', xScale(24))
-	// 	.attr('y', yScale(649326064))
-	// 	.text('(6.5 * 10^8)')
-	// 	.attr('class', 'legend2')
-	// 	.style('fill', '#fff')
-	// 	.style('fill-opacity', 0.5)
-	// 	.attr('text-anchor', 'start')
-	// 	.attr('stroke', 'none');
+	g.append('text') 
+		.attr('x', xScale(24))
+		.attr('y', yScale(649326064) - 6)
+		.text('6.5 x 10^8')
+		.attr('class', 'legend2')
+		.style('fill', '#fff')
+		.style('fill-opacity', 0.5)
+		.attr('text-anchor', 'end')
+		.attr('stroke', 'none');
 }
 
 var busArea;
