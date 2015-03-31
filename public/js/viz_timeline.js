@@ -68,6 +68,16 @@ function drawTimeline() {
 		.attr('stroke', 'rgba(255,255,255,0.2)')
 		.attr('stroke-width', 1);
 		// .style("stroke-dasharray", ("1,3"));
+
+	// g.append('text') 
+	// 	.attr('x', xScale(24))
+	// 	.attr('y', yScale(649326064))
+	// 	.text('(6.5 * 10^8)')
+	// 	.attr('class', 'legend2')
+	// 	.style('fill', '#fff')
+	// 	.style('fill-opacity', 0.5)
+	// 	.attr('text-anchor', 'start')
+	// 	.attr('stroke', 'none');
 }
 
 var busArea;

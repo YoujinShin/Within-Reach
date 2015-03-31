@@ -44,14 +44,14 @@ function mouseClickLayer(e) {
 		$('#container').css('visibility', 'hidden');
 
 		setLayerStyle(e.target, "unselect");
-		map.setView([42.3133735 + 0.0, -71.0571571 - 0.04], 12);
+		map.setView([42.3133735 + 0.0, -71.0571571 - 0.04], 11);
 		// map.removeLayer(markerLayer);
 	} else {
 
 		$('#container').css('visibility', 'visible');
 
 		setLayerStyle(e.target, "select");
-		map.setView([e.latlng.lat, e.latlng.lng], 12);
+		map.setView([e.latlng.lat, e.latlng.lng], 11);
 
 		// disable last clicked layer
 		if(lastClicked == 0) {
