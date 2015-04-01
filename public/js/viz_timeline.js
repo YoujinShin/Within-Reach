@@ -1,7 +1,7 @@
 
 function drawTimeline() {
 
-	var timeline = g.append('text') 
+	timeline = g.append('text') 
 		.attr('x', gap*2 + 20)
 		.attr('y', 20)
 		.text('TIMELINE')
@@ -21,7 +21,7 @@ function drawTimeline() {
 	// 	.attr('text-anchor', 'start')
 	// 	.attr('stroke', 'none');
 
-	g.append('text') 
+	timeline_unit = g.append('text') 
 		.attr('x', gap*2 + 20)
 		.attr('y', 40)
 		.text('Area (sqm)')
@@ -31,7 +31,7 @@ function drawTimeline() {
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
  
-	g.append('line') // left line
+	timeline_line = g.append('line') // left line
 		.attr('x1', gap*2+7)
 		.attr('y1', 10 )
 		.attr('x2', gap*2+7)
@@ -48,7 +48,7 @@ function drawTimeline() {
 	drawBar();
 
 
-	var bottomLine = g.append('line') 
+	bottomLine = g.append('line') 
 		.attr('x1', xScale(0))
 		.attr('y1', yScale(0) )
 		.attr('x2', xScale(24) )
@@ -59,7 +59,7 @@ function drawTimeline() {
 		.attr('stroke-width', 1);
 		// .style("stroke-dasharray", ("1,3"))
 
-	var topLine = g.append('line') 
+	topLine = g.append('line') 
 		.attr('x1', xScale(0))
 		.attr('y1', yScale(649326064) )
 		.attr('x2', xScale(24))
@@ -69,7 +69,7 @@ function drawTimeline() {
 		.attr('stroke-width', 1);
 		// .style("stroke-dasharray", ("1,3"));
 
-	g.append('text') 
+	maxValue = g.append('text') 
 		.attr('x', xScale(24))
 		.attr('y', yScale(649326064) - 6)
 		.text('6.5 x 10^8')
@@ -156,19 +156,21 @@ function getArea_bike(id) {
 	}
 }
 
+window.dotLists=[];
+
 function getDots() {
 
 	for(var i = 0; i < 25; i ++) {
 
-		g.append('circle')
-		.attr('cx', xScale(i))
-		.attr('cy', yScale(0))
-		.attr('r', 2)
-		.style('fill', 'rgba(255,255,255,0.4)')
-		.attr('stroke', 'rgba(0,0,0,0)');
+		dotLists[i] = g.append('circle')
+			.attr('cx', xScale(i))
+			.attr('cy', yScale(0))
+			.attr('r', 2)
+			.style('fill', 'rgba(255,255,255,0.4)')
+			.attr('stroke', 'rgba(0,0,0,0)');
 	}
 
-	g.append('text') // blue: bus + walking
+	value_0 = g.append('text') // blue: bus + walking
 		.attr('x', xScale(0))
 		.attr('y', yScale(0) - 10)
 		.text('0')
@@ -178,7 +180,7 @@ function getDots() {
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
 
-	g.append('text') // blue: bus + walking
+	value_24 = g.append('text') // blue: bus + walking
 		.attr('x', xScale(24))
 		.attr('y', yScale(0) - 10)
 		.text('24 hr')
@@ -187,7 +189,6 @@ function getDots() {
 		.style('fill-opacity', 1)
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
-
 }
 
 

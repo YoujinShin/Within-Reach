@@ -3,7 +3,7 @@ var layer_2_active = false;
 
 function drawLayers() {
 
-	var layers = g.append('text') // blue: bus + walking
+	layers = g.append('text') // blue: bus + walking
 		.attr('x', gap + 20)
 		.attr('y', 20)
 		.text('LAYERS')
@@ -13,7 +13,7 @@ function drawLayers() {
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
 
-	g.append('line') // blue: bus + walking
+	layer_line = g.append('line') // blue: bus + walking
 		.attr('x1', gap+7)
 		.attr('y1', 10 )
 		.attr('x2', gap+7)
@@ -33,11 +33,10 @@ function drawLayers() {
 	var tg = (width/4-40)/2; 
 	var x1 = gap + 20 + diameter2;
 	var x2 = x1 + 140;
-	// var x2 = x1 + tg;
 	var dy = 15;
 	var img_size = 30;
 
-	var img_1 = g.append("image")
+	img_1 = g.append("image")
 	   .attr('x', x1 - img_size/2)
 	   .attr('y', height/2 - img_size/2 + dy)
 	   .attr('width', img_size)
@@ -45,15 +44,19 @@ function drawLayers() {
 	   .style('opacity', 0.9)
 	   .attr("xlink:href","bus2.png");
 
-	var img_2 = g.append("image")
-	   .attr('x', x2 - img_size/2*1.2)
+	img_2 = g.append("image")
+	   // .attr('x', x2 - img_size/2*1.2)
 	   .attr('y', height/2 - img_size/2 +dy + 5)
+	   .attr('x', function() {
+			if(window_width < 1309) { return x1 + 70 - img_size/2*1.2; }
+			else { return x2 - img_size/2*1.2; }
+		})
 	   .attr('width', img_size*1.2)
 	   .attr('height', img_size*0.6*1.2)
 	   .style('opacity', 0.9)
 	   .attr("xlink:href","bike2.png");
 
-	var layer_1 = g.append('circle') // bus route layer
+	layer_1 = g.append('circle') // bus route layer
 		.attr('cx', x1)
 		.attr('cy', height/2 + dy)
 		.attr('r', diameter2)
@@ -85,13 +88,15 @@ function drawLayers() {
 				
 				busRouteLayer.addTo(map);
 			}
-
-
 		});
 
-	var layer_2 = g.append('circle') // bike station layer
-		.attr('cx', x2)
+	layer_2 = g.append('circle') // bike station layer
+		// .attr('cx', x2)
 		.attr('cy', height/2 + dy )
+		.attr('cx', function() {
+			if(window_width < 1309) { return x1 + 70; }
+			else { return x2; }
+		})
 		.attr('r', diameter2)
 		.style('fill', '#fff')
 		.style('fill-opacity', 0.15)
@@ -121,7 +126,7 @@ function drawLayers() {
 			}
 		});
 
-	var text_1 =  g.append('text') // blue: bus + walking
+	text2_1 =  g.append('text') // blue: bus + walking
 		.attr('x', x1 + diameter2 + 8)
 		.attr('y',  height/2 + dy)
 		.text('Bus')
@@ -129,39 +134,54 @@ function drawLayers() {
 		.style('fill', '#fff')
 		.style('fill-opacity', 0.65)
 		.attr('text-anchor', 'start')
+		.style('visibility', function() {
+			if(window_width < 1309) { return 'hidden'; }
+			else { return 'visible'; }
+		})
 		.attr('stroke', 'none');
 
-	var text_1_1 =  g.append('text') // blue: bus + walking
+	text2_1_1 =  g.append('text') // blue: bus + walking
 		.attr('x', x1 + diameter2 + 8)
 		.attr('y',  height/2 + dy + 15)
 		.text('Routes')
 		.attr('class', 'legend2')
 		.style('fill', '#fff')
 		.style('fill-opacity', 0.65)
+		.style('visibility', function() {
+			if(window_width < 1309) { return 'hidden'; }
+			else { return 'visible'; }
+		})
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
 
-	var text_2 =  g.append('text') // blue: bus + walking
+	text2_2 =  g.append('text') // blue: bus + walking
 		.attr('x', x2 + diameter2 + 8)
 		.attr('y',  height/2 + dy)
 		.text('Hubway')
 		.attr('class', 'legend2')
 		.style('fill', '#fff')
 		.style('fill-opacity', 0.65)
+		.style('visibility', function() {
+			if(window_width < 1309) { return 'hidden'; }
+			else { return 'visible'; }
+		})
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
 
-	var text_2_1 =  g.append('text') // blue: bus + walking
+	text2_2_1 =  g.append('text') // blue: bus + walking
 		.attr('x', x2 + diameter2 + 8)
 		.attr('y',  height/2 + dy + 15)
 		.text('Stations')
 		.attr('class', 'legend2')
 		.style('fill', '#fff')
+		.style('visibility', function() {
+			if(window_width < 1309) { return 'hidden'; }
+			else { return 'visible'; }
+		})
 		.style('fill-opacity', 0.65)
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
 }
-
 
 
 ///////////////////////////////////////////////////////////////////////////////////////

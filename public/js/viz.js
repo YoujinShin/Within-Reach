@@ -5,6 +5,8 @@ var width = parseInt(d3.select('#container').style('width'), 10),
 	height = parseInt(d3.select('#container').style('height'), 10),
 	height = height - margin.top - margin.bottom;
 
+var window_width = $( window ).width();
+
 var svg = d3.select('#container').append('svg')
 	.attr('width', width + margin.left + margin.right)
 	.attr('height', height + margin.top + margin.bottom);
@@ -80,11 +82,15 @@ function drawLegend() {
 		.style('fill-opacity', 1)
 		.attr('stroke-width', 0);
 
-	var circle_2_1 = g.append('circle') // blue: bus + walking
+	circle_2_1 = g.append('circle') // blue: bus + walking
 		.attr('cx', dx)
 		.attr('cy', height/2 + diameter - 5)
 		.attr('r', 2)
 		.style('fill', '#fff')
+		.style('visibility', function() {
+			if(window_width < 1309) { return 'hidden'; }
+			else { return 'visible'; }
+		})
 		.style('fill-opacity', 1)
 		.attr('stroke-width', 0);
 
@@ -98,44 +104,60 @@ function drawLegend() {
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
 
-	var line_1 = g.append('line') // blue: bus + walking
+	line_1 = g.append('line') // blue: bus + walking
 		.attr('x1', dx)
 		.attr('y1', height/2 )
 		.attr('x2', 160)
 		.attr('y2', height/2 )
+		.style('visibility', function() {
+			if(window_width < 1309) { return 'hidden'; }
+			else { return 'visible'; }
+		})
 		.style('fill', '#fff')
 		.style('fill-opacity', 0)
 		.style("stroke-dasharray", ("1,3"))
 		.attr('stroke', '#fff')
 		.attr('stroke-width', 1);
 
-	var line_2 = g.append('line') // blue: bus + walking
+	line_2 = g.append('line') // blue: bus + walking
 		.attr('x1', dx)
 		.attr('y1', height/2 + diameter - 5)
 		.attr('x2', 160)
 		.attr('y2', height/2 + diameter - 5)
+		.style('visibility', function() {
+			if(window_width < 1309) { return 'hidden'; }
+			else { return 'visible'; }
+		})
 		.style('fill', '#fff')
 		.style('fill-opacity', 0)
 		.style("stroke-dasharray", ("1,3"))
 		.attr('stroke', '#fff')
 		.attr('stroke-width', 1);
 
-	var text_1 = g.append('text') // blue: bus + walking
+	text_1 = g.append('text') // blue: bus + walking
 		.attr('x', 165)
 		.attr('y', height/2 + 4)
 		.text('Bus + Walking')
 		.attr('class', 'legend2')
 		.style('fill', '#fff')
+		.style('visibility', function() {
+			if(window_width < 1309) { return 'hidden'; }
+			else { return 'visible'; }
+		})
 		.style('fill-opacity', 1)
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
 
-	var text_2 = g.append('text') // blue: bus + walking
+	text_2 = g.append('text') // blue: bus + walking
 		.attr('x', 165)
 		.attr('y', height/2 + diameter - 1)
 		.text('Bus + Walking + Bike')
 		.attr('class', 'legend2')
 		.style('fill', '#fff')
+		.style('visibility', function() {
+			if(window_width < 1309) { return 'hidden'; }
+			else { return 'visible'; }
+		})
 		.style('fill-opacity', 1)
 		.attr('text-anchor', 'start')
 		.attr('stroke', 'none');
