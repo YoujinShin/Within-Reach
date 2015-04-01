@@ -95,8 +95,11 @@ $( window ).resize(function() {
 		dotLists[i].attr('cx', xScale(i));
 	}
 
+	// // tooltip
+	// if($( window ).width() < 1309) {  tooltip.style("visibility", "visible"); }
+	// else { tooltip.style("visibility", "hidden"); }
 
-	// window_w = $( window ).width();
+
 	if(window_w < 1309) {
 		text_1.style('visibility', 'hidden');
 		text_2.style('visibility', 'hidden');

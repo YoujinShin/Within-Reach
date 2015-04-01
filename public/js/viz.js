@@ -5,7 +5,7 @@ var width = parseInt(d3.select('#container').style('width'), 10),
 	height = parseInt(d3.select('#container').style('height'), 10),
 	height = height - margin.top - margin.bottom;
 
-var window_width = $( window ).width();
+window_width = $( window ).width();
 
 var svg = d3.select('#container').append('svg')
 	.attr('width', width + margin.left + margin.right)
@@ -16,7 +16,7 @@ var g = svg.append('g')
 	.attr('height', height)
 	.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-var tooltip = d3.select("body")
+tooltip = d3.select("body")
 		.append("div")
 		.attr("id", "tooltip");
 

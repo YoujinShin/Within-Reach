@@ -66,11 +66,14 @@ function drawLayers() {
 		.attr('stroke', 'rgba(255,255,255,0.2)')
 		.on("mouseover", function() {
 			d3.select(this).style('fill-opacity', 0.3);
-			// tooltip.text("Bus Routes");
+			tooltip.text("Bus Routes");
+
+			if($( window ).width() < 1309) {  tooltip.style("visibility", "visible"); }
+			else { tooltip.style("visibility", "hidden"); }
 			// tooltip.style("visibility", "visible");
 		})
 		.on("mousemove", function(){
-			// tooltip.style("top", (event.pageY- 40)+"px").style("left",(event.pageX -40)+"px");
+			tooltip.style("top", (event.pageY- 40)+"px").style("left",(event.pageX -40)+"px");
 		})
 		.on("mouseout", function() {
 			d3.select(this).style('fill-opacity', 0.15);
@@ -104,8 +107,12 @@ function drawLayers() {
 		.attr('stroke', 'rgba(255,255,255,0.2)')
 		.on("mouseover", function() {
 			d3.select(this).style('fill-opacity', 0.3);
+			tooltip.text("Hubway Stations");
+			if($( window ).width() < 1309) {  tooltip.style("visibility", "visible"); }
+			else { tooltip.style("visibility", "hidden"); }
 		})
 		.on("mousemove", function(){
+			tooltip.style("top", (event.pageY- 40)+"px").style("left",(event.pageX -40)+"px");
 		})
 		.on("mouseout", function() {
 			d3.select(this).style('fill-opacity', 0.15);
