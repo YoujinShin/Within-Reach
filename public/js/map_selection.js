@@ -52,6 +52,7 @@ function mouseClickLayer(e) {
 
 		setLayerStyle(e.target, "select");
 		map.setView([e.latlng.lat, e.latlng.lng], 11);
+		// console.log(e.latlng.lat + ", " + e.latlng.lng + "/ " + blockID);
 
 		// disable last clicked layer
 		if(lastClicked == 0) {

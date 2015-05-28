@@ -88,5 +88,8 @@ function ready(error, boston, bus_area, bike_area) {
 	}).addTo(blockLayer); 
 
 	blockLayer.addTo(map);
+	markerLayer.addTo(map);
+
+	initialSelect();
 }
 
