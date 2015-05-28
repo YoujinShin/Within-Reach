@@ -3,7 +3,7 @@ function initialSelect() {
 	tempMarker.setLatLng([42.33063116562984, -71.08085632324219]);
 
 
-	
+
 	var blockID = 3393;
 
 	map.setView([42.33063116562984, -71.08085632324219], 11);
@@ -41,7 +41,9 @@ function initialSelect() {
 	xhr.onload = function() {
 		var json = JSON.parse(xhr.responseText);
 		drawFirstArea(json);
-		getCenter(infos.geometry);
+		// getCenter(infos.geometry);
+
+		$('.spinner').css('visibility', 'hidden');
 	};
 
 	xhr.onerror = function() {
