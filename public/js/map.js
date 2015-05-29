@@ -13,7 +13,7 @@ var map = L.map('map', {
 }).setView([42.3133735 + 0.0, -71.0571571 - 0.04], 12);
 
 var baseLayer = L.mapbox.tileLayer('senseable.kakb3n74');
-baseLayer.setOpacity(0.6);
+baseLayer.setOpacity(0.9);
 baseLayer.addTo(map);
 
 var blockLayer = L.mapbox.featureLayer();

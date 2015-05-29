@@ -1,7 +1,7 @@
 .spinner {
   margin: 120px auto;
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   position: relative;
   z-index: 40;
 }
@@ -9,7 +9,7 @@
 .container1 > div, .container2 > div, .container3 > div {
   width: 6px;
   height: 6px;
-  background-color: #aaa;
+  background-color: rgba(255,255,255,0.9);
 
   border-radius: 100%;
   position: absolute;
